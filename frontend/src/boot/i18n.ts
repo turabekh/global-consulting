@@ -40,6 +40,10 @@ export function setLocale(locale: SupportedLocale): void {
   }
 }
 
+export function getLocale(): string {
+  return i18n.global.locale.value;
+}
+
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 declare module 'vue-i18n' {
   export interface DefineLocaleMessage extends MessageSchema {}
@@ -51,6 +55,6 @@ declare module 'vue-i18n' {
 export default defineBoot(({ app }) => {
   app.use(i18n);
   if (typeof window !== 'undefined') {
-    window.document.documentElement.lang = i18n.global.locale.value;
+    window.document.documentElement.lang = getLocale();
   }
 });

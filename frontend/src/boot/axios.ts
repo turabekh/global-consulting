@@ -1,6 +1,6 @@
 import { defineBoot } from '#q-app/wrappers';
 import axios, { type AxiosInstance } from 'axios';
-import { i18n } from 'src/boot/i18n';
+import { getLocale } from 'src/boot/i18n';
 
 declare module 'vue' {
   interface ComponentCustomProperties {
@@ -16,7 +16,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  config.headers['Accept-Language'] = i18n.global.locale.value;
+  config.headers['Accept-Language'] = getLocale();
   return config;
 });
 

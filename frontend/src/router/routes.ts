@@ -4,13 +4,42 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    children: [
+      {
+        path: '',
+        name: 'home',
+        component: () => import('pages/IndexPage.vue'),
+      },
+    ],
+  },
+  {
+    path: '/',
+    component: () => import('layouts/AuthLayout.vue'),
+    meta: { guestOnly: true },
+    children: [
+      { path: 'login', name: 'login', component: () => import('pages/auth/LoginPage.vue') },
+      { path: 'signup', name: 'signup', component: () => import('pages/auth/SignupPage.vue') },
+      {
+        path: 'forgot-password',
+        name: 'forgot-password',
+        component: () => import('pages/auth/ForgotPasswordPage.vue'),
+      },
+    ],
   },
   {
     path: '/',
     component: () => import('layouts/AuthLayout.vue'),
     children: [
-      { path: 'login', name: 'login', component: () => import('pages/auth/LoginPage.vue') },
+      {
+        path: 'verify-email/:key?',
+        name: 'verify-email',
+        component: () => import('pages/auth/VerifyEmailPage.vue'),
+      },
+      {
+        path: 'reset-password/:uid/:token',
+        name: 'reset-password',
+        component: () => import('pages/auth/ResetPasswordPage.vue'),
+      },
     ],
   },
   {

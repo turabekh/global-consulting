@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <div class="column items-center q-gutter-md">
+    <div class="column items-center q-gutter-md" style="padding: 48px 24px">
       <h3>{{ t('app.name') }}</h3>
 
       <div v-if="!authStore.isInitialized">
@@ -8,14 +8,19 @@
         <span>{{ t('common.loading') }}</span>
       </div>
 
-      <div v-else-if="authStore.isAuthenticated">
+      <div v-else-if="authStore.isAuthenticated" class="column items-center q-gutter-sm">
         <p>Logged in as: {{ authStore.user?.email }}</p>
         <p>Verified: {{ authStore.user?.is_email_verified ? 'yes' : 'no' }}</p>
-        <q-btn label="Logout" color="negative" @click="onLogout" />
+        <q-btn label="Logout" color="negative" unelevated @click="onLogout" />
       </div>
 
-      <div v-else>
+      <div v-else class="column items-center q-gutter-sm">
         <p>Not logged in</p>
+        <q-btn-group push>
+          <q-btn label="Log in" color="primary" unelevated to="/login" />
+          <q-btn label="Sign up" color="secondary" unelevated to="/signup" />
+        </q-btn-group>
+        <q-btn flat dense to="/forgot-password" label="Forgot password" />
       </div>
 
       <q-separator />
