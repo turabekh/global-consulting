@@ -96,4 +96,18 @@ export const authService = {
     const { data } = await api.post<{ access: string }>('/auth/token/refresh/');
     return data;
   },
+
+  async googleLogin(accessToken: string): Promise<LoginResponse> {
+    const { data } = await api.post<LoginResponse>('/users/auth/google/', {
+      access_token: accessToken,
+    });
+    return data;
+  },
+
+  async facebookLogin(accessToken: string): Promise<LoginResponse> {
+    const { data } = await api.post<LoginResponse>('/users/auth/facebook/', {
+      access_token: accessToken,
+    });
+    return data;
+  },
 };

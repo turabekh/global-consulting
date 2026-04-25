@@ -96,7 +96,9 @@
           class="gc-social-btn"
           icon="img:https://www.google.com/favicon.ico"
           :label="t('auth.login.continueWithGoogle')"
-          disable
+          :loading="socialLoading === 'google'"
+          :disable="socialLoading !== null"
+          @click="onSocialLogin('google')"
         />
         <q-btn
           outline
@@ -104,7 +106,9 @@
           class="gc-social-btn"
           icon="facebook"
           :label="t('auth.login.continueWithFacebook')"
-          disable
+          :loading="socialLoading === 'facebook'"
+          :disable="socialLoading !== null"
+          @click="onSocialLogin('facebook')"
         />
       </div>
 
@@ -146,6 +150,24 @@ const showPassword = ref(false);
 const showPassword2 = ref(false);
 const error = ref<string | null>(null);
 const signedUp = ref(false);
+const socialLoading = ref<'google' | 'facebook' | null>(null);
+
+async function onSocialLogin(provider: 'google' | 'facebook') {
+  error.value = null;
+  socialLoading.value = provider;
+  try {
+    if (provider === 'google') {
+      await authStore.loginWithGoogle();
+    } else {
+      await authStore.loginWithFacebook();
+    }
+    await router.push('/');
+  } catch (err) {
+    error.value = extractApiError(err, t('errors.generic'));
+  } finally {
+    socialLoading.value = null;
+  }
+}
 
 async function onSubmit() {
   error.value = null;

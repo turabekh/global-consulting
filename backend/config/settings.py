@@ -181,3 +181,30 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "0.1.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "APP": {
+            "client_id": env("GOOGLE_OAUTH_CLIENT_ID", default=""),
+            "secret": env("GOOGLE_OAUTH_CLIENT_SECRET", default=""),
+            "key": "",
+        },
+        "SCOPE": ["profile", "email"],
+        "AUTH_PARAMS": {"access_type": "online"},
+    },
+    "facebook": {
+        "APP": {
+            "client_id": env("FACEBOOK_APP_ID", default=""),
+            "secret": env("FACEBOOK_APP_SECRET", default=""),
+            "key": "",
+        },
+        "METHOD": "oauth2",
+        "SCOPE": ["email", "public_profile"],
+        "FIELDS": ["id", "email", "name", "first_name", "last_name"],
+        "VERSION": "v18.0",
+    },
+}
+
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_QUERY_EMAIL = True

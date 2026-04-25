@@ -73,7 +73,9 @@
           class="gc-social-btn"
           icon="img:https://www.google.com/favicon.ico"
           :label="t('auth.login.continueWithGoogle')"
-          disable
+          :loading="socialLoading === 'google'"
+          :disable="socialLoading !== null"
+          @click="onSocialLogin('google')"
         />
         <q-btn
           outline
@@ -81,7 +83,9 @@
           class="gc-social-btn"
           icon="facebook"
           :label="t('auth.login.continueWithFacebook')"
-          disable
+          :loading="socialLoading === 'facebook'"
+          :disable="socialLoading !== null"
+          @click="onSocialLogin('facebook')"
         />
       </div>
 
@@ -101,7 +105,9 @@ import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { AxiosError } from 'axios';
 import { useAuthStore } from 'src/stores/auth';
+import { extractApiError } from 'src/utils/api-errors';
 
+const socialLoading = ref<'google' | 'facebook' | null>(null);
 const { t } = useI18n();
 const router = useRouter();
 const authStore = useAuthStore();
@@ -123,6 +129,23 @@ async function onSubmit() {
     } else {
       error.value = t('errors.generic');
     }
+  }
+}
+
+async function onSocialLogin(provider: 'google' | 'facebook') {
+  error.value = null;
+  socialLoading.value = provider;
+  try {
+    if (provider === 'google') {
+      await authStore.loginWithGoogle();
+    } else {
+      await authStore.loginWithFacebook();
+    }
+    await router.push('/');
+  } catch (err) {
+    error.value = extractApiError(err, t('errors.generic'));
+  } finally {
+    socialLoading.value = null;
   }
 }
 </script>

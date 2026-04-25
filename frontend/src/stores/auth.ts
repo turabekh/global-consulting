@@ -44,6 +44,32 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  async function loginWithGoogle(): Promise<void> {
+    const { getOAuthAccessToken } = await import('src/services/oauth');
+    const token = await getOAuthAccessToken('google');
+    isLoading.value = true;
+    try {
+      const response = await authService.googleLogin(token);
+      user.value = response.user;
+      applyUserLocale();
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  async function loginWithFacebook(): Promise<void> {
+    const { getOAuthAccessToken } = await import('src/services/oauth');
+    const token = await getOAuthAccessToken('facebook');
+    isLoading.value = true;
+    try {
+      const response = await authService.facebookLogin(token);
+      user.value = response.user;
+      applyUserLocale();
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   function applyUserLocale() {
     const lang = user.value?.profile?.language;
     if (lang === 'uz' || lang === 'en') {
@@ -121,5 +147,7 @@ export const useAuthStore = defineStore('auth', () => {
     refreshUser,
     updateProfile,
     uploadAvatar,
+    loginWithGoogle,
+    loginWithFacebook,
   };
 });
