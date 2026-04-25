@@ -1,33 +1,56 @@
 import { defineBoot } from '#q-app/wrappers';
 import { createI18n } from 'vue-i18n';
-
-import messages from 'src/i18n';
+import messages, { DEFAULT_LOCALE, isSupportedLocale, type SupportedLocale } from 'src/i18n';
 
 export type MessageLanguages = keyof typeof messages;
-// Type-define 'en-US' as the master schema for the resource
-export type MessageSchema = (typeof messages)['en-US'];
+export type MessageSchema = (typeof messages)['en'];
 
-// See https://vue-i18n.intlify.dev/guide/advanced/typescript.html#global-resource-schema-type-definition
+const LOCALE_STORAGE_KEY = 'gc-locale';
+
+function detectLocale(): SupportedLocale {
+  if (typeof window === 'undefined') {
+    return DEFAULT_LOCALE;
+  }
+
+  const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+  if (stored && isSupportedLocale(stored)) {
+    return stored;
+  }
+
+  const browser = window.navigator.language.split('-')[0];
+  if (browser && isSupportedLocale(browser)) {
+    return browser;
+  }
+
+  return DEFAULT_LOCALE;
+}
+
+export const i18n = createI18n({
+  locale: detectLocale(),
+  fallbackLocale: DEFAULT_LOCALE,
+  legacy: false,
+  messages,
+});
+
+export function setLocale(locale: SupportedLocale): void {
+  i18n.global.locale.value = locale;
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+    window.document.documentElement.lang = locale;
+  }
+}
+
 /* eslint-disable @typescript-eslint/no-empty-object-type */
 declare module 'vue-i18n' {
-  // define the locale messages schema
   export interface DefineLocaleMessage extends MessageSchema {}
-
-  // define the datetime format schema
   export interface DefineDateTimeFormat {}
-
-  // define the number format schema
   export interface DefineNumberFormat {}
 }
 /* eslint-enable @typescript-eslint/no-empty-object-type */
 
 export default defineBoot(({ app }) => {
-  const i18n = createI18n<{ message: MessageSchema }, MessageLanguages>({
-    locale: 'en-US',
-    legacy: false,
-    messages,
-  });
-
-  // Set i18n instance on app
   app.use(i18n);
+  if (typeof window !== 'undefined') {
+    window.document.documentElement.lang = i18n.global.locale.value;
+  }
 });
