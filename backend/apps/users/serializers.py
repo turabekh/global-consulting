@@ -4,11 +4,14 @@ from dj_rest_auth.registration.serializers import (
 )
 from rest_framework import serializers
 
+from apps.profiles.serializers import ProfileSerializer
+
 from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
     full_name = serializers.SerializerMethodField()
+    profile = ProfileSerializer(required=False)
 
     class Meta:
         model = User
@@ -21,11 +24,26 @@ class UserSerializer(serializers.ModelSerializer):
             "phone",
             "is_email_verified",
             "date_joined",
+            "profile",
         )
         read_only_fields = ("id", "email", "is_email_verified", "date_joined")
 
     def get_full_name(self, obj: User) -> str:
         return obj.get_full_name()
+
+    def update(self, instance, validated_data):
+        profile_data = validated_data.pop("profile", None)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        if profile_data:
+            profile = instance.profile
+            for attr, value in profile_data.items():
+                setattr(profile, attr, value)
+            profile.save()
+
+        return instance
 
 
 class RegisterSerializer(BaseRegisterSerializer):

@@ -1,5 +1,12 @@
 import { api } from 'src/boot/axios';
 
+export interface UserProfile {
+  language: string;
+  timezone: string;
+  bio: string;
+  avatar_url: string | null;
+}
+
 export interface User {
   id: number;
   email: string;
@@ -9,6 +16,7 @@ export interface User {
   phone: string;
   is_email_verified: boolean;
   date_joined: string;
+  profile: UserProfile;
 }
 
 export interface LoginPayload {

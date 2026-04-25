@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
+import { setLocale } from 'src/boot/i18n';
 import {
   authService,
   type LoginPayload,
@@ -9,6 +10,7 @@ import {
   type User,
   type VerifyEmailPayload,
 } from 'src/services/auth';
+import { profileService, type ProfileUpdatePayload } from 'src/services/profile';
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null);
@@ -22,6 +24,7 @@ export const useAuthStore = defineStore('auth', () => {
     isLoading.value = true;
     try {
       user.value = await authService.fetchUser();
+      applyUserLocale();
     } catch {
       user.value = null;
     } finally {
@@ -35,8 +38,16 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const response = await authService.login(payload);
       user.value = response.user;
+      applyUserLocale();
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  function applyUserLocale() {
+    const lang = user.value?.profile?.language;
+    if (lang === 'uz' || lang === 'en') {
+      setLocale(lang);
     }
   }
 
@@ -77,6 +88,24 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = await authService.fetchUser();
   }
 
+  async function updateProfile(payload: ProfileUpdatePayload): Promise<void> {
+    isLoading.value = true;
+    try {
+      user.value = await profileService.updateMe(payload);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  async function uploadAvatar(file: File): Promise<void> {
+    isLoading.value = true;
+    try {
+      user.value = await profileService.uploadAvatar(file);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   return {
     user,
     isInitialized,
@@ -90,5 +119,7 @@ export const useAuthStore = defineStore('auth', () => {
     requestPasswordReset,
     confirmPasswordReset,
     refreshUser,
+    updateProfile,
+    uploadAvatar,
   };
 });

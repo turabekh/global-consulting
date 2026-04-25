@@ -10,6 +10,12 @@ const routes: RouteRecordRaw[] = [
         name: 'home',
         component: () => import('pages/IndexPage.vue'),
       },
+      {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('pages/ProfilePage.vue'),
+        meta: { requiresAuth: true },
+      },
     ],
   },
   {

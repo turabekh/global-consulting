@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.urls import include, path
@@ -30,6 +32,7 @@ urlpatterns = [
     ),
     path("api/auth/", include("dj_rest_auth.urls")),
     path("api/auth/registration/", include("dj_rest_auth.registration.urls")),
+    path("api/users/", include("apps.users.urls")),
     path(
         "password-reset/confirm/<str:uidb64>/<str:token>/",
         password_reset_redirect,
@@ -42,3 +45,7 @@ urlpatterns = [
         name="swagger",
     ),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

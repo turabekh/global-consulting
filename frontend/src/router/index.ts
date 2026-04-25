@@ -27,6 +27,9 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     if (to.meta.guestOnly && authStore.isAuthenticated) {
       return { name: 'home' };
     }
+    if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+      return { name: 'login' };
+    }
     return true;
   });
 
