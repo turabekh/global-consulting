@@ -1,0 +1,11 @@
+node_modules/
+.quasar/
+dist/
+.eslintcache
+.DS_Store
+.git/
+.gitignore
+.env
+.env.*
+README.md
+*.log
