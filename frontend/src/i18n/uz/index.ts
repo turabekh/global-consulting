@@ -93,6 +93,37 @@ export default {
     removeAvatar: "Avatarni o'chirish",
     logout: 'Chiqish',
   },
+  nav: {
+    home: 'Bosh sahifa',
+    services: 'Xizmatlar',
+    about: 'Biz haqimizda',
+    testimonial: 'Sharhlar',
+    contact: "Bog'lanish",
+    blog: 'Blog',
+    partnership: 'Hamkorlik',
+    signUp: "Ro'yxatdan o'tish",
+    logIn: 'Kirish',
+  },
+  services: {
+    tourism: {
+      title: 'Sayohat',
+      description: 'Dunyoni ekspert yordamida kashf eting.',
+    },
+    study: {
+      title: "Ta'lim",
+      description: "Chet elda yuqori ta'limga erishing.",
+    },
+    work: {
+      title: 'Ish',
+      description: 'Global karyerangizni ishonch bilan boshlang.',
+    },
+    visa: {
+      title: "Visa qo'llab-quvvatlash",
+      description: 'Bugun viza arizangizni boshlang.',
+    },
+    exploreTitle: "Xizmatlarimizni ko'rib chiqing",
+    exploreNow: "Hoziroq ko'rish",
+  },
   errors: {
     required: 'Bu maydon talab qilinadi',
     invalidEmail: "Iltimos, to'g'ri email kiriting",

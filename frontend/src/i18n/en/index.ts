@@ -93,6 +93,37 @@ export default {
     removeAvatar: 'Remove avatar',
     logout: 'Log out',
   },
+  nav: {
+    home: 'Home',
+    services: 'Services',
+    about: 'About Us',
+    testimonial: 'Testimonial',
+    contact: 'Contact',
+    blog: 'Blog',
+    partnership: 'Partnership',
+    signUp: 'Sign up',
+    logIn: 'Log in',
+  },
+  services: {
+    tourism: {
+      title: 'Tourism',
+      description: 'Uncover the world with expert guidance.',
+    },
+    study: {
+      title: 'Study',
+      description: 'Achieve academic excellence abroad.',
+    },
+    work: {
+      title: 'Work',
+      description: 'Launch your global career with confidence.',
+    },
+    visa: {
+      title: 'Visa Support',
+      description: 'Start your visa application today.',
+    },
+    exploreTitle: 'Explore Our Services',
+    exploreNow: 'Explore Now',
+  },
   errors: {
     required: 'This field is required',
     invalidEmail: 'Please enter a valid email',
