@@ -1,8 +1,11 @@
+import sys
 from pathlib import Path
 
 import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+sys.path.insert(0, str(BASE_DIR / "apps"))
 
 env = environ.Env(
     DEBUG=(bool, False),
@@ -22,6 +25,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "apps.users",
+    "apps.profiles",
 ]
 
 MIDDLEWARE = [
@@ -100,3 +105,6 @@ EMAIL_HOST = env("EMAIL_HOST", default="localhost")
 EMAIL_PORT = env.int("EMAIL_PORT", default=1025)
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="noreply@globalconsulting.local")
+
+
+AUTH_USER_MODEL = "users.User"
