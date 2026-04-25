@@ -14,4 +14,10 @@ export const siteConfig = {
     company: 'Global Consulting',
     copyrightYear: 2024,
   },
+  stats: [
+    { value: '5,000+', labelKey: 'home.stats.jobPlacements' },
+    { value: '95%', labelKey: 'home.stats.visaApproval' },
+    { value: '20,000+', labelKey: 'home.stats.travelPackages' },
+    { value: '10+', labelKey: 'home.stats.expertise' },
+  ],
 };

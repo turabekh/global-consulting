@@ -148,4 +148,36 @@ export default {
     passwordMismatch: 'Passwords do not match',
     generic: 'Something went wrong. Please try again.',
   },
+  home: {
+    hero: {
+      titlePart1: 'Simplify',
+      titleHighlight1: 'Your',
+      titlePart2: 'World With One',
+      titleHighlight2: 'Platform',
+      subtitle: 'Expert Consulting for Tourism, Study, and Work',
+      cta: 'Explore Our Services',
+    },
+    about: {
+      titlePart1: 'About',
+      titleHighlight: 'Us',
+      subtitle:
+        'Our expertise spans tourism, study, and work, providing comprehensive solutions tailored to your specific needs.',
+    },
+    stats: {
+      jobPlacements: 'Successful job placements worldwide',
+      visaApproval: 'Student visa approval success rate',
+      travelPackages: 'Travel packages booked annually',
+      expertise: 'Years of expertise in global mobility',
+    },
+    services: {
+      titlePart1: 'Explore Our',
+      titleHighlight: 'Services',
+      subtitle: 'We offer a range of expert consulting services to help you explore new horizons.',
+    },
+    team: {
+      title: 'Meet Our',
+      titleHighlight: 'Team',
+      empty: 'Team information is being updated.',
+    },
+  },
 };

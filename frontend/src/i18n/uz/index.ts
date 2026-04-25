@@ -141,6 +141,39 @@ export default {
     termsTitle: 'Foydalanish shartlari',
     comingSoon: "Ushbu sahifa tez orada tayyor bo'ladi.",
   },
+  home: {
+    hero: {
+      titlePart1: 'Dunyongizni bitta',
+      titleHighlight1: 'platforma',
+      titlePart2: 'bilan',
+      titleHighlight2: 'soddalashtiring',
+      subtitle: "Sayohat, ta'lim va ish bo'yicha ekspert maslahati",
+      cta: "Xizmatlarimizni ko'rib chiqing",
+    },
+    about: {
+      titlePart1: 'Biz',
+      titleHighlight: 'haqimizda',
+      subtitle:
+        "Bizning tajribamiz sayohat, ta'lim va ish sohalarini qamrab oladi, sizning ehtiyojlaringizga moslashtirilgan kompleks yechimlarni taklif etadi.",
+    },
+    stats: {
+      jobPlacements: "Dunyo bo'ylab muvaffaqiyatli ish o'rinlari",
+      visaApproval: "Talaba vizalarining ma'qullanish foizi",
+      travelPackages: 'Yiliga buyurtma qilingan sayohat paketlari',
+      expertise: "Global mobillik bo'yicha tajriba yillari",
+    },
+    services: {
+      titlePart1: 'Bizning',
+      titleHighlight: 'xizmatlarimiz',
+      subtitle:
+        "Yangi imkoniyatlarni kashf etishingizga yordam beradigan ekspert maslahat xizmatlari to'plamini taklif etamiz.",
+    },
+    team: {
+      title: 'Bizning',
+      titleHighlight: 'jamoamiz',
+      empty: "Jamoa haqidagi ma'lumotlar yangilanmoqda.",
+    },
+  },
   errors: {
     required: 'Bu maydon talab qilinadi',
     invalidEmail: "Iltimos, to'g'ri email kiriting",

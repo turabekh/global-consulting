@@ -8,3 +8,4 @@ django-cors-headers>=4.7
 dj-rest-auth>=7.0
 django-allauth[socialaccount]>=65.0
 drf-spectacular>=0.28
+django-modeltranslation>=0.20
