@@ -1,0 +1,38 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+      - id: detect-private-key
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        args: [--fix]
+        files: ^backend/
+      - id: ruff-format
+        files: ^backend/
+
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint (frontend)
+        entry: npx --prefix frontend eslint --config frontend/eslint.config.js --fix
+        language: system
+        files: ^frontend/.*\.(ts|js|vue|cjs|mjs)$
+        pass_filenames: true
+
+      - id: prettier
+        name: prettier (frontend)
+        entry: npx --prefix frontend prettier --write
+        language: system
+        files: ^frontend/.*\.(ts|js|vue|css|scss|html|json|md)$
+        exclude: ^frontend/(node_modules|dist|\.quasar)/
+        pass_filenames: true
