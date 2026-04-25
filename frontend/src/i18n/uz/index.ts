@@ -124,6 +124,23 @@ export default {
     exploreTitle: "Xizmatlarimizni ko'rib chiqing",
     exploreNow: "Hoziroq ko'rish",
   },
+  footer: {
+    menuLabel: 'Menyu',
+    servicesLabel: 'Xizmatlar',
+    aboutLabel: 'Biz haqimizda',
+    aboutUs: 'Biz haqimizda',
+    ourTeam: 'Bizning jamoa',
+    partnership: 'Hamkorlik',
+    career: 'Karyera',
+    privacyPolicy: 'Maxfiylik siyosati',
+    termsOfService: 'Foydalanish shartlari',
+    rightsReserved: 'Barcha huquqlar himoyalangan.',
+  },
+  legal: {
+    privacyTitle: 'Maxfiylik siyosati',
+    termsTitle: 'Foydalanish shartlari',
+    comingSoon: "Ushbu sahifa tez orada tayyor bo'ladi.",
+  },
   errors: {
     required: 'Bu maydon talab qilinadi',
     invalidEmail: "Iltimos, to'g'ri email kiriting",

@@ -5,12 +5,14 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <SiteFooter />
   </q-layout>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import SiteHeader from 'src/components/layout/SiteHeader.vue';
+import SiteFooter from 'src/components/layout/SiteFooter.vue';
 import MobileDrawer from 'src/components/layout/MobileDrawer.vue';
 
 const mobileOpen = ref(false);

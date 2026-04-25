@@ -124,6 +124,23 @@ export default {
     exploreTitle: 'Explore Our Services',
     exploreNow: 'Explore Now',
   },
+  footer: {
+    menuLabel: 'Menu',
+    servicesLabel: 'Services',
+    aboutLabel: 'About',
+    aboutUs: 'About Us',
+    ourTeam: 'Our Team',
+    partnership: 'Partnership',
+    career: 'Career',
+    privacyPolicy: 'Privacy Policy',
+    termsOfService: 'Terms of Service',
+    rightsReserved: 'All Rights Reserved.',
+  },
+  legal: {
+    privacyTitle: 'Privacy Policy',
+    termsTitle: 'Terms of Service',
+    comingSoon: 'This page is coming soon.',
+  },
   errors: {
     required: 'This field is required',
     invalidEmail: 'Please enter a valid email',
