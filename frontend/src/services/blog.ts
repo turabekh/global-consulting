@@ -1,6 +1,6 @@
 import { api } from 'src/boot/axios';
 
-export type BlogCategory = 'general' | 'tourism' | 'study' | 'work' | 'visa';
+export type BlogCategory = 'general' | 'tourism' | 'study' | 'work' | 'visa' | undefined;
 
 export interface BlogPostListItem {
   id: number;

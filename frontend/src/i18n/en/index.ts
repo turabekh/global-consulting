@@ -461,5 +461,33 @@ export default {
       relatedBlogEmpty: 'New articles coming soon.',
       detailsCta: 'View details',
     },
+    blog: {
+      title: 'Our',
+      titleHighlight: 'Blog',
+      subtitle: 'Stories, guides, and insights from our work helping people go global.',
+      empty: 'No articles in this category yet.',
+      categories: {
+        all: 'All',
+        tourism: 'Tourism',
+        work: 'Work',
+        study: 'Study',
+        visa: 'Visa Support',
+        general: 'General',
+      },
+    },
+    blogDetail: {
+      backToBlog: 'Back to blog',
+      readTime: 'min read',
+      recommendedTitle: 'Recommended',
+      categoryLabels: {
+        general: 'General',
+        tourism: 'Tourism',
+        study: 'Study',
+        work: 'Work',
+        visa: 'Visa Support',
+      },
+      notFound: 'Post not found',
+      notFoundMessage: 'The article you are looking for might have been moved or unpublished.',
+    },
   },
 };

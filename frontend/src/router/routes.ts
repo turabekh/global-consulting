@@ -56,6 +56,16 @@ const routes: RouteRecordRaw[] = [
         name: 'service-detail',
         component: () => import('pages/ServiceDetailPage.vue'),
       },
+      {
+        path: 'blog',
+        name: 'blog',
+        component: () => import('pages/BlogListPage.vue'),
+      },
+      {
+        path: 'blog/:slug',
+        name: 'blog-detail',
+        component: () => import('pages/BlogDetailPage.vue'),
+      },
     ],
   },
   {

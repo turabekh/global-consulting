@@ -472,5 +472,35 @@ export default {
       relatedBlogEmpty: 'Yangi maqolalar tez orada.',
       detailsCta: "Batafsil ko'rish",
     },
+    blog: {
+      title: 'Bizning',
+      titleHighlight: 'blog',
+      subtitle:
+        "Insonlarga global bo'lishida yordam berib olgan tajribalarimizdan hikoyalar va qo'llanmalar.",
+      empty: "Bu bo'limda hali maqolalar yo'q.",
+      categories: {
+        all: 'Barchasi',
+        tourism: 'Sayohat',
+        work: 'Ish',
+        study: "Ta'lim",
+        visa: "Visa qo'llab-quvvatlash",
+        general: 'Umumiy',
+      },
+    },
+    blogDetail: {
+      backToBlog: 'Blogga qaytish',
+      readTime: "daq. o'qish",
+      recommendedTitle: 'Tavsiya etamiz',
+      categoryLabels: {
+        general: 'Umumiy',
+        tourism: 'Sayohat',
+        study: "Ta'lim",
+        work: 'Ish',
+        visa: "Visa qo'llab-quvvatlash",
+      },
+      notFound: 'Maqola topilmadi',
+      notFoundMessage:
+        "Siz qidirayotgan maqola ko'chirilgan yoki nashrdan olingan bo'lishi mumkin.",
+    },
   },
 };
