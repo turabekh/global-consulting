@@ -13,8 +13,8 @@
         no-caps
         size="lg"
         :label="t('home.contactCta.cta')"
-        to="/contact"
         class="gc-contact-cta-btn"
+        @click="dialogs.openContact()"
       />
     </div>
   </section>
@@ -22,8 +22,10 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
+import { useDialogsStore } from 'src/stores/dialogs';
 
 const { t } = useI18n();
+const dialogs = useDialogsStore();
 </script>
 
 <style scoped lang="scss">
