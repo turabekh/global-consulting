@@ -333,5 +333,133 @@ export default {
       subtitle:
         'Hear from people who took the leap with us — students, travelers, and professionals.',
     },
+    services: {
+      title: 'Our',
+      titleHighlight: 'Services',
+      subtitle:
+        "Whether you're traveling, studying, or building your career abroad — we're here to make every step easier.",
+    },
+    serviceDetail: {
+      tourism: {
+        title: 'Tourism',
+        subtitle: 'Discover the world with curated travel packages and expert guidance.',
+        catalogTitle: 'Featured tour packages',
+        catalogEmpty: 'New tour packages coming soon.',
+        priceFrom: 'From',
+        durationLabel: 'days',
+        features: {
+          curated: {
+            title: 'Curated destinations',
+            description: 'Hand-picked routes balancing culture, adventure, and rest.',
+          },
+          local: {
+            title: 'Local experts',
+            description: 'On-the-ground partners who know each destination intimately.',
+          },
+          flexible: {
+            title: 'Flexible booking',
+            description: 'Tailor any package to your pace, dates, and group size.',
+          },
+          support: {
+            title: '24/7 support',
+            description: "Real humans available the entire time you're traveling.",
+          },
+        },
+      },
+      study: {
+        title: 'Study Abroad',
+        subtitle: 'From application to landing — we guide you through every step.',
+        catalogTitle: 'Featured universities',
+        catalogEmpty: 'University listings coming soon.',
+        tuitionFrom: 'Tuition from',
+        rankingLabel: 'World ranking',
+        features: {
+          match: {
+            title: 'Program matching',
+            description: 'We help you find programs that fit your goals and budget.',
+          },
+          application: {
+            title: 'Application support',
+            description: 'Essays, recommendations, transcripts — handled with care.',
+          },
+          scholarships: {
+            title: 'Scholarship guidance',
+            description: 'Discover funding opportunities you might have missed.',
+          },
+          settle: {
+            title: 'Arrival assistance',
+            description: 'Housing, banking, sim cards — set up before classes start.',
+          },
+        },
+      },
+      work: {
+        title: 'Work Abroad',
+        subtitle: 'Launch your global career with vetted opportunities and full-process support.',
+        catalogTitle: 'Featured opportunities',
+        catalogEmpty: 'New opportunities coming soon.',
+        salaryRange: 'Salary',
+        employmentTypes: {
+          full_time: 'Full-time',
+          part_time: 'Part-time',
+          contract: 'Contract',
+          internship: 'Internship',
+        },
+        features: {
+          vetted: {
+            title: 'Vetted employers',
+            description: "Only working with companies we've audited end-to-end.",
+          },
+          coaching: {
+            title: 'Interview coaching',
+            description: 'Mock interviews with industry-specific feedback.',
+          },
+          relocation: {
+            title: 'Relocation logistics',
+            description: 'Visa, flights, and your first month — all coordinated.',
+          },
+          ongoing: {
+            title: 'Post-placement check-ins',
+            description: 'We stay in touch for the first 6 months of your new role.',
+          },
+        },
+      },
+      visa: {
+        title: 'Visa Support',
+        subtitle: 'Demystifying visa applications with expert preparation and review.',
+        catalogTitle: 'Visa types we support',
+        catalogEmpty: 'Visa info coming soon.',
+        processingLabel: 'Processing time',
+        successRateLabel: 'Success rate',
+        categories: {
+          tourist: 'Tourist',
+          student: 'Student',
+          work: 'Work',
+          business: 'Business',
+          family: 'Family',
+        },
+        features: {
+          assessment: {
+            title: 'Eligibility assessment',
+            description: 'A clear yes-or-no on whether your case has a real chance.',
+          },
+          documents: {
+            title: 'Document review',
+            description: 'Every form checked twice before submission.',
+          },
+          tracking: {
+            title: 'Application tracking',
+            description: 'Always know where your application is in the queue.',
+          },
+          interview: {
+            title: 'Interview prep',
+            description: 'Walk into your visa interview ready and confident.',
+          },
+        },
+      },
+      featuresHeading: 'What we offer',
+      relatedBlogTitle: 'Read more',
+      relatedBlogEmpty: 'New articles coming soon.',
+      detailsCta: 'View details',
+    },
   },
 };

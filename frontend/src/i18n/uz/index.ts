@@ -339,5 +339,138 @@ export default {
       subtitle:
         'Biz bilan birga qadam tashlagan odamlardan eshiting — talabalar, sayohatchilar va mutaxassislar.',
     },
+    services: {
+      title: 'Bizning',
+      titleHighlight: 'xizmatlarimiz',
+      subtitle:
+        "Sayohat qilayotgan bo'lsangiz, o'qiyotgan yoki chet elda karyera qurayotgan bo'lsangiz — har bir qadamni osonlashtirish uchun shu yerdamiz.",
+    },
+    serviceDetail: {
+      tourism: {
+        title: 'Sayohat',
+        subtitle:
+          'Maxsus tanlangan sayohat paketlari va ekspert maslahati bilan dunyoni kashf eting.',
+        catalogTitle: 'Tavsiya qilingan sayohat paketlari',
+        catalogEmpty: 'Yangi sayohat paketlari tez orada.',
+        priceFrom: 'Narxi',
+        durationLabel: 'kun',
+        features: {
+          curated: {
+            title: "Tanlangan yo'nalishlar",
+            description: "Madaniyat, sarguzasht va dam olish muvozanatidagi yo'nalishlar.",
+          },
+          local: {
+            title: 'Mahalliy ekspertlar',
+            description: "Har bir yo'nalishni yaxshi biladigan mahalliy hamkorlar.",
+          },
+          flexible: {
+            title: 'Moslashuvchan bron',
+            description: "Har qanday paketni o'z tezligingiz va guruh hajmingizga moslang.",
+          },
+          support: {
+            title: '24/7 yordam',
+            description: 'Sayohat davomida har doim haqiqiy mutaxassislar siz bilan.',
+          },
+        },
+      },
+      study: {
+        title: "Chet elda ta'lim",
+        subtitle: "Arizadan to manzilga yetib borguningizgacha — har bir bosqichda yo'naltiramiz.",
+        catalogTitle: 'Tavsiya qilingan universitetlar',
+        catalogEmpty: "Universitetlar ro'yxati tez orada.",
+        tuitionFrom: "O'qish to'lovi",
+        rankingLabel: 'Jahon reytingi',
+        features: {
+          match: {
+            title: 'Dastur tanlash',
+            description:
+              'Maqsadlaringiz va byudjetingizga mos dasturlarni topishda yordam beramiz.',
+          },
+          application: {
+            title: "Ariza bo'yicha yordam",
+            description: 'Insholar, tavsiyalar, transkriptlar — barchasi diqqat bilan.',
+          },
+          scholarships: {
+            title: "Stipendiya bo'yicha maslahat",
+            description:
+              "O'tkazib yuborishingiz mumkin bo'lgan moliyalashtirish imkoniyatlarini toping.",
+          },
+          settle: {
+            title: 'Kelganingizda yordam',
+            description: 'Uy-joy, bank, SIM-karta — darslar boshlangunga qadar tayyor.',
+          },
+        },
+      },
+      work: {
+        title: 'Chet elda ish',
+        subtitle:
+          "Tekshirilgan imkoniyatlar va to'liq jarayon yordami bilan global karyerangizni boshlang.",
+        catalogTitle: 'Tavsiya qilingan imkoniyatlar',
+        catalogEmpty: 'Yangi imkoniyatlar tez orada.',
+        salaryRange: 'Maosh',
+        employmentTypes: {
+          full_time: "To'liq stavka",
+          part_time: 'Yarim stavka',
+          contract: 'Shartnoma',
+          internship: 'Stajirovka',
+        },
+        features: {
+          vetted: {
+            title: 'Tekshirilgan ish beruvchilar',
+            description: "Faqat to'liq audit qilgan kompaniyalar bilan ishlaymiz.",
+          },
+          coaching: {
+            title: "Intervyu mashg'ulotlari",
+            description: "Soha bo'yicha sinov intervyulari va batafsil fikr-mulohazalar.",
+          },
+          relocation: {
+            title: "Ko'chish logistikasi",
+            description: 'Viza, parvoz va birinchi oy — barchasi muvofiqlashtirilgan.',
+          },
+          ongoing: {
+            title: 'Joylashuvdan keyingi aloqa',
+            description: "Yangi ishingizning birinchi 6 oyi davomida aloqada bo'lamiz.",
+          },
+        },
+      },
+      visa: {
+        title: 'Viza yordami',
+        subtitle:
+          "Ekspert tayyorgarligi va ko'rib chiqish bilan viza arizalarini soddalashtiramiz.",
+        catalogTitle: "Biz qo'llab-quvvatlaydigan viza turlari",
+        catalogEmpty: "Viza ma'lumotlari tez orada.",
+        processingLabel: "Ko'rib chiqish vaqti",
+        successRateLabel: 'Muvaffaqiyat darajasi',
+        categories: {
+          tourist: 'Sayyoh',
+          student: 'Talaba',
+          work: 'Ish',
+          business: 'Biznes',
+          family: 'Oila',
+        },
+        features: {
+          assessment: {
+            title: 'Munosiblikni baholash',
+            description: "Sizning ishingiz haqiqiy imkoniyatga egami yo'qmi — aniq javob.",
+          },
+          documents: {
+            title: "Hujjatlarni ko'rib chiqish",
+            description: 'Yuborishdan oldin har bir forma ikki marta tekshiriladi.',
+          },
+          tracking: {
+            title: 'Ariza kuzatuvi',
+            description: 'Arizangiz qaysi bosqichda ekanligini har doim biling.',
+          },
+          interview: {
+            title: 'Intervyuga tayyorgarlik',
+            description: 'Viza intervyusiga tayyor va ishonchli kiring.',
+          },
+        },
+      },
+      featuresHeading: 'Biz nimani taklif etamiz',
+      relatedBlogTitle: 'Batafsil',
+      relatedBlogEmpty: 'Yangi maqolalar tez orada.',
+      detailsCta: "Batafsil ko'rish",
+    },
   },
 };
