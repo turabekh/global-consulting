@@ -188,5 +188,19 @@ export default {
       cta: 'Join the satisfied clients.',
       empty: 'Testimonials are coming soon.',
     },
+    faq: {
+      titlePart1: 'Frequently Asked',
+      titleHighlight: 'Questions',
+      subtitle: 'Common questions, clear answers',
+      empty: 'No questions in this category yet.',
+      categories: {
+        all: 'All',
+        work: 'Work',
+        study: 'Study',
+        tourism: 'Tourism',
+        visa: 'Visa',
+        general: 'General',
+      },
+    },
   },
 };

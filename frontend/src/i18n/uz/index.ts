@@ -182,6 +182,20 @@ export default {
       cta: "Mamnun mijozlarga qo'shiling.",
       empty: "Sharhlar tez orada e'lon qilinadi.",
     },
+    faq: {
+      titlePart1: "Ko'p so'raladigan",
+      titleHighlight: 'savollar',
+      subtitle: 'Tez-tez beriladigan savollar, aniq javoblar',
+      empty: "Bu bo'limda hali savollar yo'q.",
+      categories: {
+        all: 'Barchasi',
+        work: 'Ish',
+        study: "Ta'lim",
+        tourism: 'Sayohat',
+        visa: 'Visa',
+        general: 'Umumiy',
+      },
+    },
   },
   errors: {
     required: 'Bu maydon talab qilinadi',

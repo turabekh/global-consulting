@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "apps.profiles.apps.ProfilesConfig",
     "apps.team.apps.TeamConfig",
     "apps.testimonials.apps.TestimonialsConfig",
+    "apps.faq.apps.FaqConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
