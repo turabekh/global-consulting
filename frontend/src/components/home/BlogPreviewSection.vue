@@ -1,30 +1,238 @@
 <template>
-  <section class="gc-section">
-    <div class="gc-section-inner">
-      <span class="gc-stub-label">BlogPreviewSection</span>
+  <section class="gc-blog-preview">
+    <div class="gc-blog-inner">
+      <header class="gc-blog-header">
+        <h2 class="gc-blog-title">
+          {{ t('home.blogPreview.titlePart1') }}
+          <span class="gc-gradient-text">{{ t('home.blogPreview.titleHighlight') }}</span>
+        </h2>
+        <router-link to="/blog" class="gc-blog-see-other">
+          {{ t('home.blogPreview.seeOther') }}
+          <q-icon name="arrow_forward" size="14px" />
+        </router-link>
+      </header>
+
+      <div v-if="loading" class="gc-blog-loading">
+        <q-spinner color="primary" size="32px" />
+      </div>
+
+      <p v-else-if="posts.length === 0" class="gc-blog-empty">
+        {{ t('home.blogPreview.empty') }}
+      </p>
+
+      <ul v-else class="gc-blog-grid">
+        <li v-for="post in posts" :key="post.id" class="gc-blog-card">
+          <router-link :to="`/blog/${post.slug}`" class="gc-blog-link">
+            <div class="gc-blog-cover">
+              <img
+                v-if="post.cover_image_url"
+                :src="post.cover_image_url"
+                :alt="post.title"
+                loading="lazy"
+              />
+              <div v-else class="gc-blog-cover-placeholder"></div>
+            </div>
+            <div class="gc-blog-meta">
+              <span class="gc-blog-date">{{ formatDate(post.published_at, locale) }}</span>
+            </div>
+            <h3 class="gc-blog-card-title">{{ post.title }}</h3>
+            <p class="gc-blog-excerpt">{{ post.excerpt }}</p>
+            <span class="gc-blog-readmore">
+              {{ t('home.blogPreview.readMore') }}
+              <q-icon name="arrow_forward" size="14px" />
+            </span>
+          </router-link>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
-<style scoped lang="scss">
-.gc-section {
-  padding: 64px 16px;
+<script setup lang="ts">
+import { onMounted, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { blogService, type BlogPostListItem } from 'src/services/blog';
+import { formatDate } from 'src/utils/format';
+
+const { t, locale } = useI18n();
+
+const posts = ref<BlogPostListItem[]>([]);
+const loading = ref(true);
+
+async function load() {
+  loading.value = true;
+  try {
+    posts.value = (await blogService.list()).slice(0, 4);
+  } catch {
+    posts.value = [];
+  } finally {
+    loading.value = false;
+  }
 }
 
-.gc-section-inner {
+onMounted(load);
+watch(locale, load);
+</script>
+
+<style scoped lang="scss">
+.gc-blog-preview {
+  padding: 32px 16px 64px;
+
+  @media (min-width: 720px) {
+    padding: 48px 16px 96px;
+  }
+}
+
+.gc-blog-inner {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.gc-stub-label {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: var(--gc-radius-pill);
-  background: var(--gc-primary-soft);
+.gc-blog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.gc-blog-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+
+  @media (min-width: 720px) {
+    font-size: 36px;
+  }
+}
+
+.gc-blog-see-other {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--gc-primary);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.gc-blog-loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.gc-blog-empty {
+  text-align: center;
+  color: var(--gc-text-muted);
+  margin: 48px 0;
+}
+
+.gc-blog-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1000px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.gc-blog-card {
+  display: block;
+}
+
+.gc-blog-link {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--gc-radius-md);
+  background: var(--gc-bg);
+  border: 1px solid var(--gc-border);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--gc-shadow-md);
+  }
+}
+
+.gc-blog-cover {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  border-radius: var(--gc-radius-sm);
+  overflow: hidden;
+  background: var(--gc-bg-soft);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.gc-blog-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--gc-bg-soft);
+}
+
+.gc-blog-meta {
+  font-size: 11px;
+  color: var(--gc-text-muted);
+  letter-spacing: 0.04em;
+  padding-top: 4px;
+}
+
+.gc-blog-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.gc-blog-excerpt {
+  font-size: 13px;
+  color: var(--gc-text-muted);
+  line-height: 1.45;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.gc-blog-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--gc-primary);
+  font-weight: 500;
+  margin-top: auto;
 }
 </style>

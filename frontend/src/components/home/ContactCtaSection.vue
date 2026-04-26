@@ -1,30 +1,61 @@
 <template>
-  <section class="gc-section">
-    <div class="gc-section-inner">
-      <span class="gc-stub-label">ContactCtaSection</span>
+  <section class="gc-contact-cta">
+    <div class="gc-contact-cta-inner">
+      <h2 class="gc-contact-cta-title">
+        <span class="gc-gradient-text">{{ t('home.contactCta.titlePart1') }}</span>
+        <span class="gc-gradient-text">{{ t('home.contactCta.titleHighlight') }}</span>
+        {{ t('home.contactCta.titlePart2') }}
+      </h2>
+
+      <q-btn
+        color="primary"
+        unelevated
+        no-caps
+        size="lg"
+        :label="t('home.contactCta.cta')"
+        to="/contact"
+        class="gc-contact-cta-btn"
+      />
     </div>
   </section>
 </template>
 
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+</script>
+
 <style scoped lang="scss">
-.gc-section {
-  padding: 64px 16px;
+.gc-contact-cta {
+  padding: 64px 16px 32px;
 }
 
-.gc-section-inner {
-  max-width: 1200px;
+.gc-contact-cta-inner {
+  max-width: 720px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
 }
 
-.gc-stub-label {
-  display: inline-block;
-  padding: 6px 12px;
+.gc-contact-cta-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+
+  @media (min-width: 720px) {
+    font-size: 36px;
+  }
+}
+
+.gc-contact-cta-btn {
   border-radius: var(--gc-radius-pill);
-  background: var(--gc-primary-soft);
-  color: var(--gc-primary);
-  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  padding: 12px 32px;
 }
 </style>

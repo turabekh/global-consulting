@@ -196,6 +196,19 @@ export default {
         general: 'Umumiy',
       },
     },
+    blogPreview: {
+      titlePart1: 'Bizning',
+      titleHighlight: 'blog',
+      seeOther: 'Boshqa maqolalar',
+      readMore: 'Batafsil',
+      empty: "Hozircha maqolalar e'lon qilinmagan.",
+    },
+    contactCta: {
+      titlePart1: 'Bugun biz bilan',
+      titleHighlight: "bog'laning",
+      titlePart2: "— maqsadlaringizni muhokama qiling va xizmatlarimizni o'rganing.",
+      cta: 'Aloqaga chiqing',
+    },
   },
   errors: {
     required: 'Bu maydon talab qilinadi',

@@ -36,6 +36,7 @@ urlpatterns = [
     path("api/team/", include("apps.team.urls")),
     path("api/testimonials/", include("apps.testimonials.urls")),
     path("api/faq/", include("apps.faq.urls")),
+    path("api/blog/", include("apps.blog.urls")),
     path("accounts/", include("allauth.urls")),
     path(
         "password-reset/confirm/<str:uidb64>/<str:token>/",

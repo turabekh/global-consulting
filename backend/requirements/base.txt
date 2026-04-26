@@ -11,3 +11,4 @@ drf-spectacular>=0.28
 django-modeltranslation>=0.20
 markdown>=3.7
 bleach>=6.2
+django-autoslug>=1.9

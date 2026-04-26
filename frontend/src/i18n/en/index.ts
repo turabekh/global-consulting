@@ -202,5 +202,18 @@ export default {
         general: 'General',
       },
     },
+    blogPreview: {
+      titlePart1: 'Our',
+      titleHighlight: 'Blog',
+      seeOther: 'See other articles',
+      readMore: 'Read more',
+      empty: 'No articles published yet.',
+    },
+    contactCta: {
+      titlePart1: 'Contact us',
+      titleHighlight: 'today',
+      titlePart2: 'to discuss your goals and explore our services.',
+      cta: 'Get in Touch',
+    },
   },
 };
