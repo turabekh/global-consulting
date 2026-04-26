@@ -38,6 +38,10 @@ urlpatterns = [
     path("api/inquiries/", include("apps.inquiries.urls")),
     path("api/faq/", include("apps.faq.urls")),
     path("api/blog/", include("apps.blog.urls")),
+    path("api/tour-packages/", include("apps.tour_packages.urls")),
+    path("api/universities/", include("apps.universities.urls")),
+    path("api/jobs/", include("apps.jobs.urls")),
+    path("api/visa-types/", include("apps.visa_types.urls")),
     path("accounts/", include("allauth.urls")),
     path(
         "password-reset/confirm/<str:uidb64>/<str:token>/",
