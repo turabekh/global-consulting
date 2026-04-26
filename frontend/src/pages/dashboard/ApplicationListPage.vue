@@ -56,7 +56,7 @@
 
     <ul v-else class="gc-app-list-items">
       <li v-for="app in filtered" :key="app.reference" class="gc-app-list-item">
-        <router-link :to="`/dashboard/applications/${app.reference}`" class="gc-app-list-link">
+        <router-link :to="linkFor(app)" class="gc-app-list-link">
           <div class="gc-app-list-icon" :class="`gc-app-list-icon-${app.service_type}`">
             <q-icon :name="serviceIcon(app.service_type)" size="20px" />
           </div>
@@ -147,6 +147,13 @@ const counts = computed<Record<FilterKey, number>>(() => ({
 
 function serviceLabel(type: ServiceType): string {
   return t(`dashboard.overview.serviceLabels.${type}`);
+}
+
+function linkFor(app: ApplicationListItem): string {
+  if (app.status === 'draft') {
+    return `/dashboard/applications/${app.reference}/edit`;
+  }
+  return `/dashboard/applications/${app.reference}`;
 }
 
 function serviceIcon(type: ServiceType): string {

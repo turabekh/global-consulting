@@ -29,8 +29,16 @@ class ApplicationViewSet(viewsets.ModelViewSet):
             return ApplicationCreateSerializer
         return ApplicationDetailSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user, status=Application.Status.DRAFT, current_step=1)
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        instance = serializer.save(
+            user=request.user,
+            status=Application.Status.DRAFT,
+            current_step=1,
+        )
+        out = ApplicationDetailSerializer(instance, context={"request": request})
+        return Response(out.data, status=status.HTTP_201_CREATED)
 
     def perform_update(self, serializer):
         instance = self.get_object()

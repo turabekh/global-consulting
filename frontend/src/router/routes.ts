@@ -83,6 +83,16 @@ const routes: RouteRecordRaw[] = [
         name: 'applications',
         component: () => import('pages/dashboard/ApplicationListPage.vue'),
       },
+      {
+        path: 'applications/new',
+        name: 'application-new',
+        component: () => import('pages/dashboard/ApplicationEditPage.vue'),
+      },
+      {
+        path: 'applications/:reference/edit',
+        name: 'application-edit',
+        component: () => import('pages/dashboard/ApplicationEditPage.vue'),
+      },
     ],
   },
   {
