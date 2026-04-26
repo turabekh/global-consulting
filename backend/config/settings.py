@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "apps.faq.apps.FaqConfig",
     "apps.blog.apps.BlogConfig",
     "apps.inquiries.apps.InquiriesConfig",
+    "apps.applications.apps.ApplicationsConfig",
     "apps.tour_packages.apps.TourPackagesConfig",
     "apps.universities.apps.UniversitiesConfig",
     "apps.jobs.apps.JobsConfig",
