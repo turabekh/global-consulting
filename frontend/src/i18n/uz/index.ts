@@ -503,4 +503,19 @@ export default {
         "Siz qidirayotgan maqola ko'chirilgan yoki nashrdan olingan bo'lishi mumkin.",
     },
   },
+  dashboard: {
+    nav: {
+      overview: 'Asosiy',
+      applications: 'Mening arizalarim',
+      messages: 'Xabarlar',
+      profile: 'Profil',
+      signOut: 'Chiqish',
+    },
+    breadcrumb: {
+      home: 'Dashboard',
+    },
+    overview: {
+      title: 'Yana xush kelibsiz',
+    },
+  },
 };

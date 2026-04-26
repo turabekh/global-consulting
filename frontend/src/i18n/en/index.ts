@@ -490,4 +490,19 @@ export default {
       notFoundMessage: 'The article you are looking for might have been moved or unpublished.',
     },
   },
+  dashboard: {
+    nav: {
+      overview: 'Overview',
+      applications: 'My Applications',
+      messages: 'Messages',
+      profile: 'Profile',
+      signOut: 'Sign out',
+    },
+    breadcrumb: {
+      home: 'Dashboard',
+    },
+    overview: {
+      title: 'Welcome back',
+    },
+  },
 };
