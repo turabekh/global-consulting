@@ -1,7 +1,7 @@
 <template>
   <section class="gc-testimonials">
-    <div class="gc-testimonials-inner">
-      <aside class="gc-testimonials-side">
+    <div class="gc-testimonials-inner" :class="{ 'gc-testimonials-inner-grid-only': gridOnly }">
+      <aside v-if="!gridOnly" class="gc-testimonials-side">
         <h2 class="gc-testimonials-title">
           {{ t('home.testimonials.titlePart1') }}
           <span class="gc-gradient-text">{{ t('home.testimonials.titleHighlight1') }}</span>
@@ -24,6 +24,7 @@
       </aside>
 
       <div class="gc-testimonials-content">
+        <!-- everything inside this div stays the same -->
         <div v-if="loading" class="gc-testimonials-loading">
           <q-spinner color="primary" size="32px" />
         </div>
@@ -32,7 +33,11 @@
           {{ t('home.testimonials.empty') }}
         </p>
 
-        <div v-else class="gc-testimonials-masonry">
+        <div
+          v-else
+          class="gc-testimonials-masonry"
+          :class="{ 'gc-testimonials-masonry-wide': gridOnly }"
+        >
           <article v-for="item in items" :key="item.id" class="gc-testimonial-card">
             <div class="gc-testimonial-body" v-html="item.body_html"></div>
             <footer class="gc-testimonial-author">
@@ -64,6 +69,12 @@
 import { onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { testimonialsService, type Testimonial } from 'src/services/testimonials';
+
+interface Props {
+  gridOnly?: boolean;
+}
+
+withDefaults(defineProps<Props>(), { gridOnly: false });
 
 const { t, locale } = useI18n();
 
@@ -260,5 +271,21 @@ watch(locale, load);
 .gc-testimonial-author-city {
   font-size: 12px;
   color: var(--gc-text-muted);
+}
+
+.gc-testimonials-inner-grid-only {
+  display: block;
+}
+
+.gc-testimonials-masonry-wide {
+  columns: 1;
+
+  @media (min-width: 600px) {
+    columns: 2;
+  }
+
+  @media (min-width: 1000px) {
+    columns: 3;
+  }
 }
 </style>

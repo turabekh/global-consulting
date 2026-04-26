@@ -1,7 +1,7 @@
 <template>
   <section class="gc-about">
     <div class="gc-about-inner">
-      <div class="gc-about-header">
+      <div v-if="!hideHeading" class="gc-about-header">
         <h2 class="gc-section-title">
           <span class="gc-gradient-text">{{ t('home.about.titlePart1') }}</span>
           {{ t('home.about.titleHighlight') }}
@@ -22,6 +22,12 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import { siteConfig } from 'src/config/site';
+
+interface Props {
+  hideHeading?: boolean;
+}
+
+withDefaults(defineProps<Props>(), { hideHeading: false });
 
 const { t } = useI18n();
 </script>

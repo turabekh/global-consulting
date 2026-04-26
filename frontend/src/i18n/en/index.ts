@@ -255,4 +255,83 @@ export default {
       other: 'Other',
     },
   },
+  pages: {
+    contact: {
+      title: 'Get in',
+      titleHighlight: 'Touch',
+      subtitle: "Have questions or ready to start? We'd love to hear from you.",
+      infoTitle: 'Contact Information',
+      addressLabel: 'Visit us',
+      phoneLabel: 'Call us',
+      emailLabel: 'Write us',
+      hoursLabel: 'Office Hours',
+      hoursWeekday: 'Monday – Friday',
+      hoursWeekdayTime: '9:00 AM – 6:00 PM',
+      hoursWeekend: 'Saturday – Sunday',
+      hoursWeekendTime: 'Closed',
+    },
+    partnership: {
+      title: 'Become a',
+      titleHighlight: 'Partner',
+      subtitle:
+        'Join our network of partners and grow your business by helping people achieve their global aspirations.',
+      benefitsTitle: 'Why Partner With Us',
+      benefits: {
+        reach: {
+          title: 'Global Reach',
+          description:
+            'Access our network of clients seeking tourism, study, and work opportunities worldwide.',
+        },
+        support: {
+          title: 'Dedicated Support',
+          description: 'Our partnerships team works closely with you to ensure mutual success.',
+        },
+        growth: {
+          title: 'Growth Together',
+          description: 'We invest in long-term partnerships that scale with your business.',
+        },
+        process: {
+          title: 'Proven Process',
+          description: '10+ years of experience handling end-to-end consulting workflows.',
+        },
+      },
+    },
+    about: {
+      title: 'About',
+      titleHighlight: 'Us',
+      subtitle:
+        'We help people achieve global aspirations — through tourism, study, and work opportunities backed by real expertise.',
+      missionTitle: 'Our Mission',
+      mission:
+        'To make the world more accessible by guiding individuals through every step of their international journey — from picking the right destination to landing successfully on the other side.',
+      visionTitle: 'Our Vision',
+      vision:
+        "A world where opportunity isn't limited by geography. Where anyone, from anywhere, can pursue education, careers, and experiences abroad without friction.",
+      valuesTitle: 'What we stand for',
+      values: {
+        trust: {
+          title: 'Trust First',
+          description: 'Honest advice, transparent pricing, no hidden fees. Ever.',
+        },
+        people: {
+          title: 'People-Powered',
+          description: 'Every client gets a real human guide, not a chatbot or a hotline.',
+        },
+        results: {
+          title: 'Outcome-Driven',
+          description: 'We measure success by your visa stamps, your offer letters, your stories.',
+        },
+        global: {
+          title: 'Globally Local',
+          description: 'Local Tashkent presence, global partner network. Best of both.',
+        },
+      },
+    },
+    testimonials: {
+      title: 'Real Stories',
+      titleHighlight: 'Real Results',
+      subtitle:
+        'Hear from people who took the leap with us — students, travelers, and professionals.',
+    },
+  },
 };

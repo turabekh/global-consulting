@@ -26,6 +26,26 @@ const routes: RouteRecordRaw[] = [
         name: 'terms',
         component: () => import('pages/legal/TermsPage.vue'),
       },
+      {
+        path: 'contact',
+        name: 'contact',
+        component: () => import('pages/ContactPage.vue'),
+      },
+      {
+        path: 'partnership',
+        name: 'partnership',
+        component: () => import('pages/PartnershipPage.vue'),
+      },
+      {
+        path: 'about',
+        name: 'about',
+        component: () => import('pages/AboutPage.vue'),
+      },
+      {
+        path: 'testimonial',
+        name: 'testimonial',
+        component: () => import('pages/TestimonialsPage.vue'),
+      },
     ],
   },
   {

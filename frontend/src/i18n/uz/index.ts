@@ -256,4 +256,88 @@ export default {
       other: 'Boshqa',
     },
   },
+  pages: {
+    contact: {
+      title: 'Biz bilan',
+      titleHighlight: "bog'laning",
+      subtitle:
+        'Savollaringiz bormi yoki boshlashga tayyormisiz? Bizdan eshitishni juda xohlaymiz.',
+      infoTitle: "Aloqa ma'lumotlari",
+      addressLabel: 'Manzilimiz',
+      phoneLabel: "Qo'ng'iroq qiling",
+      emailLabel: 'Email yozing',
+      hoursLabel: 'Ish vaqti',
+      hoursWeekday: 'Dushanba – Juma',
+      hoursWeekdayTime: '9:00 – 18:00',
+      hoursWeekend: 'Shanba – Yakshanba',
+      hoursWeekendTime: 'Yopiq',
+    },
+    partnership: {
+      title: 'Hamkor',
+      titleHighlight: "bo'ling",
+      subtitle:
+        "Hamkorlar tarmog'imizga qo'shiling va odamlarga global maqsadlarini amalga oshirishda yordam berib, biznesingizni rivojlantiring.",
+      benefitsTitle: 'Nega biz bilan hamkorlik qilish kerak',
+      benefits: {
+        reach: {
+          title: 'Global qamrov',
+          description:
+            "Sayohat, ta'lim va ish imkoniyatlarini izlayotgan jahon mijozlari tarmog'imizdan foydalaning.",
+        },
+        support: {
+          title: 'Maxsus yordam',
+          description:
+            'Hamkorlik jamoamiz har ikki tomonning muvaffaqiyati uchun siz bilan yaqindan ishlaydi.',
+        },
+        growth: {
+          title: "Birgalikda o'sish",
+          description:
+            'Biz biznesingiz bilan birga rivojlanadigan uzoq muddatli hamkorlikka sarmoya kiritamiz.',
+        },
+        process: {
+          title: "Sinovdan o'tgan jarayon",
+          description: "10+ yillik to'liq maslahat jarayonlarini boshqarish tajribasi.",
+        },
+      },
+    },
+    about: {
+      title: 'Biz',
+      titleHighlight: 'haqimizda',
+      subtitle:
+        "Biz odamlarga global maqsadlariga erishishda yordam beramiz — sayohat, ta'lim va ish imkoniyatlari orqali, haqiqiy tajribaga asoslangan holda.",
+      missionTitle: 'Bizning missiyamiz',
+      mission:
+        'Insonlarga xalqaro safarining har bir bosqichida — tegishli mamlakatni tanlashdan tortib u yerga muvaffaqiyatli yetib borishgacha yordam berib, dunyoni ochiqroq qilish.',
+      visionTitle: 'Bizning maqsadimiz',
+      vision:
+        "Imkoniyat geografiya bilan cheklanmagan dunyo. Har kim, har qaerdan, ta'lim, karyera va chet eldagi tajribalarni qiyinchiliksiz olib borishi mumkin.",
+      valuesTitle: 'Nimaga ahamiyat beramiz',
+      values: {
+        trust: {
+          title: 'Ishonch birinchi',
+          description: "Halol maslahat, shaffof narxlar, hech qanday yashirin to'lovlar.",
+        },
+        people: {
+          title: "Insonga yo'naltirilgan",
+          description: 'Har bir mijozga chatbot emas, haqiqiy inson maslahatchi biriktiriladi.',
+        },
+        results: {
+          title: "Natijaga yo'naltirilgan",
+          description:
+            "Biz muvaffaqiyatni viza shtamplaringiz, taklif xatlaringiz va hikoyalaringiz bilan o'lchaymiz.",
+        },
+        global: {
+          title: 'Mahalliy va global',
+          description:
+            "Toshkentdagi mahalliy huzur, global hamkorlar tarmog'i. Eng yaxshilarining birikmasi.",
+        },
+      },
+    },
+    testimonials: {
+      title: 'Haqiqiy hikoyalar,',
+      titleHighlight: 'haqiqiy natijalar',
+      subtitle:
+        'Biz bilan birga qadam tashlagan odamlardan eshiting — talabalar, sayohatchilar va mutaxassislar.',
+    },
+  },
 };
