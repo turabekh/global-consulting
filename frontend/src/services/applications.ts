@@ -46,8 +46,8 @@ export interface ApplicationListItem {
 export interface ApplicationDetail extends ApplicationListItem {
   data: Record<string, unknown>;
   documents: ApplicationDocument[];
+  team_message: string;
 }
-
 export interface ApplicationCreatePayload {
   service_type: ServiceType;
   target_slug?: string;
@@ -60,6 +60,7 @@ export interface ApplicationUpdatePayload {
   data?: Record<string, unknown>;
   target_slug?: string;
   target_label?: string;
+  service_type?: ServiceType;
 }
 
 export const applicationsService = {

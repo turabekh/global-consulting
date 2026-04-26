@@ -77,6 +77,14 @@ class Application(models.Model):
         help_text=_("Notes from staff. Not shown to the user."),
     )
 
+    team_message = models.TextField(
+        _("message to user"),
+        blank=True,
+        help_text=_(
+            "Message visible to the user. Use for status updates, requests for more info, etc."
+        ),
+    )
+
     submitted_at = models.DateTimeField(_("submitted at"), null=True, blank=True)
     decided_at = models.DateTimeField(_("decided at"), null=True, blank=True)
 

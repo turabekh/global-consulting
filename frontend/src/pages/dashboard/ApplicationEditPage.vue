@@ -40,11 +40,41 @@
       </header>
 
       <ApplicationStepIndicator :current="currentStep" :steps="STEPS" />
-
       <div class="gc-edit-step">
-        <div class="gc-edit-step-stub">
-          <p class="gc-edit-step-stub-text">Step {{ currentStep }} content goes here.</p>
-        </div>
+        <Step1Service
+          v-if="application.current_step === 1"
+          :service-type="application.service_type"
+          :target-slug="application.target_slug"
+          :target-label="application.target_label"
+          @update:service-type="onServiceChange"
+          @update:target="onTargetChange"
+        />
+
+        <Step2Personal
+          v-else-if="application.current_step === 2"
+          :data="application.data"
+          @update:data="onDataChange"
+        />
+
+        <Step3Details
+          v-else-if="application.current_step === 3"
+          :service-type="application.service_type"
+          :data="application.data"
+          @update:data="onDataChange"
+        />
+
+        <Step4Documents
+          v-else-if="application.current_step === 4"
+          :reference="application.reference"
+          :documents="application.documents"
+          @documents-changed="onDocumentsChanged"
+        />
+
+        <Step5Review
+          v-else-if="application.current_step === 5"
+          :application="application"
+          @go-to-step="onGoToStep"
+        />
       </div>
 
       <q-banner v-if="error" class="gc-error-banner" dense rounded>{{ error }}</q-banner>
@@ -128,6 +158,11 @@ import {
 } from 'src/services/applications';
 import { extractApiError } from 'src/utils/api-errors';
 import ApplicationStepIndicator from 'src/components/dashboard/ApplicationStepIndicator.vue';
+import Step1Service from 'src/components/dashboard/application-steps/Step1Service.vue';
+import Step2Personal from 'src/components/dashboard/application-steps/Step2Personal.vue';
+import Step3Details from 'src/components/dashboard/application-steps/Step3Details.vue';
+import Step4Documents from 'src/components/dashboard/application-steps/Step4Documents.vue';
+import Step5Review from 'src/components/dashboard/application-steps/Step5Review.vue';
 
 const STEPS = ['service', 'personal', 'details', 'documents', 'review'] as const;
 
@@ -210,6 +245,16 @@ async function onNext() {
   }
 }
 
+async function onGoToStep(step: number) {
+  if (!application.value) return;
+  if (step < 1 || step > 5) return;
+  try {
+    await patchApplication({ current_step: step });
+  } catch {
+    // error already shown
+  }
+}
+
 async function onBack() {
   if (!application.value) return;
   const prev = Math.max(application.value.current_step - 1, 1);
@@ -240,6 +285,49 @@ async function onSubmit() {
     error.value = extractApiError(err, t('errors.generic'));
   } finally {
     saving.value = false;
+  }
+}
+
+async function onServiceChange(serviceType: ServiceType) {
+  if (!application.value) return;
+  try {
+    await patchApplication({
+      service_type: serviceType,
+      target_slug: '',
+      target_label: '',
+    });
+  } catch {
+    // error already shown
+  }
+}
+
+async function onDocumentsChanged() {
+  if (!application.value) return;
+  try {
+    application.value = await applicationsService.detail(application.value.reference);
+  } catch {
+    // keep current state
+  }
+}
+
+async function onDataChange(data: Record<string, unknown>) {
+  if (!application.value) return;
+  try {
+    await patchApplication({ data });
+  } catch {
+    // error already shown
+  }
+}
+
+async function onTargetChange(payload: { slug: string; label: string }) {
+  if (!application.value) return;
+  try {
+    await patchApplication({
+      target_slug: payload.slug,
+      target_label: payload.label,
+    });
+  } catch {
+    // error already shown
   }
 }
 

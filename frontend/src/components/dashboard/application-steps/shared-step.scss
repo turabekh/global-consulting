@@ -1,0 +1,25 @@
+.gc-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.gc-field-wide {
+  @media (min-width: 600px) {
+    grid-column: span 2;
+  }
+}
+
+.gc-field-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.gc-field-narrow {
+  flex: 0 0 100px;
+}

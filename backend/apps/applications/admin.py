@@ -48,7 +48,7 @@ class ApplicationAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {"fields": ("reference", "user", "service_type", "target_slug", "target_label")}),
         ("Status", {"fields": ("status", "current_step", "submitted_at", "decided_at")}),
-        ("Internal", {"fields": ("internal_notes",)}),
+        ("Communication", {"fields": ("team_message", "internal_notes")}),
         ("Data (read-only)", {"classes": ("collapse",), "fields": ("data",)}),
         ("Timestamps", {"classes": ("collapse",), "fields": ("created_at", "updated_at")}),
     )

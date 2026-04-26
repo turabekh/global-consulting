@@ -68,6 +68,7 @@ class ApplicationDetailSerializer(serializers.ModelSerializer):
             "current_step",
             "data",
             "documents",
+            "team_message",
             "submitted_at",
             "decided_at",
             "created_at",
@@ -76,6 +77,7 @@ class ApplicationDetailSerializer(serializers.ModelSerializer):
         read_only_fields = (
             "reference",
             "status",
+            "team_message",
             "submitted_at",
             "decided_at",
             "created_at",
