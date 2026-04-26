@@ -34,6 +34,7 @@ urlpatterns = [
     path("api/auth/registration/", include("dj_rest_auth.registration.urls")),
     path("api/users/", include("apps.users.urls")),
     path("api/team/", include("apps.team.urls")),
+    path("api/testimonials/", include("apps.testimonials.urls")),
     path("accounts/", include("allauth.urls")),
     path(
         "password-reset/confirm/<str:uidb64>/<str:token>/",

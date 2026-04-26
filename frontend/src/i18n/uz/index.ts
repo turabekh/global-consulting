@@ -173,6 +173,15 @@ export default {
       titleHighlight: 'jamoamiz',
       empty: "Jamoa haqidagi ma'lumotlar yangilanmoqda.",
     },
+    testimonials: {
+      titlePart1: 'Mamnun',
+      titleHighlight1: 'Mijozlar,',
+      titlePart2: 'Haqiqiy',
+      titleHighlight2: 'Natijalar',
+      subtitle: "Boshqalarga qanday yordam berganimizni ko'ring",
+      cta: "Mamnun mijozlarga qo'shiling.",
+      empty: "Sharhlar tez orada e'lon qilinadi.",
+    },
   },
   errors: {
     required: 'Bu maydon talab qilinadi',

@@ -99,7 +99,7 @@ function scrollBy(direction: -1 | 1) {
   const el = scrollEl.value;
   if (!el) return;
   const card = el.querySelector('.gc-team-card');
-  const step = card ? card.offsetWidth + 24 : 320;
+  const step = card ? card.clientWidth + 24 : 320;
   el.scrollBy({ left: step * direction, behavior: 'smooth' });
 }
 

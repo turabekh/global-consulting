@@ -179,5 +179,14 @@ export default {
       titleHighlight: 'Team',
       empty: 'Team information is being updated.',
     },
+    testimonials: {
+      titlePart1: 'Happy',
+      titleHighlight1: 'Clients,',
+      titlePart2: 'Real',
+      titleHighlight2: 'Results',
+      subtitle: 'See how we’ve helped others',
+      cta: 'Join the satisfied clients.',
+      empty: 'Testimonials are coming soon.',
+    },
   },
 };
