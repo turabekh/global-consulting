@@ -20,6 +20,7 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["*"])
 
 
 INSTALLED_APPS = [
+    "daphne",
     "modeltranslation",
     "apps.users.apps.UsersConfig",
     "apps.profiles.apps.ProfilesConfig",
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     "apps.blog.apps.BlogConfig",
     "apps.inquiries.apps.InquiriesConfig",
     "apps.applications.apps.ApplicationsConfig",
+    "apps.messaging.apps.MessagingConfig",
     "apps.tour_packages.apps.TourPackagesConfig",
     "apps.universities.apps.UniversitiesConfig",
     "apps.jobs.apps.JobsConfig",
@@ -229,3 +231,17 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
 MODELTRANSLATION_LANGUAGES = ("en", "uz")
 MODELTRANSLATION_FALLBACK_LANGUAGES = ("en",)
+
+
+ASGI_APPLICATION = "config.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [REDIS_URL],
+        },
+    },
+}
+
+FRONTEND_URL = env("FRONTEND_URL", default="http://localhost:9000")

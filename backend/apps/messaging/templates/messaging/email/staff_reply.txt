@@ -1,0 +1,9 @@
+Hi{% if user.first_name %} {{ user.first_name }}{% endif %},
+
+You have a new message about your {{ subject_label }} application:
+
+{{ message.body }}
+
+Reply here: {{ thread_url }}
+
+— Global Consulting team

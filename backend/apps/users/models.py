@@ -52,6 +52,13 @@ class User(AbstractBaseUser, PermissionsMixin):
             "Unselect this instead of deleting accounts."
         ),
     )
+
+    last_ws_seen = models.DateTimeField(
+        _("last websocket seen"),
+        null=True,
+        blank=True,
+        help_text=_("Updated when the user's websocket connection is active."),
+    )
     is_email_verified = models.BooleanField(_("email verified"), default=False)
 
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
