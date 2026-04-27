@@ -79,6 +79,7 @@ watch(
 
 .gc-dash-content {
   flex: 1;
+  min-height: 0;
   padding: 24px 16px 64px;
 
   @media (min-width: 720px) {

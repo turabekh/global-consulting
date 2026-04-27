@@ -16,7 +16,13 @@
         >
           <q-icon :name="item.icon" size="18px" />
           <span>{{ t(`dashboard.nav.${item.key}`) }}</span>
-          <span v-if="item.disabled" class="gc-dash-nav-soon">soon</span>
+          <span
+            v-if="item.key === 'messages' && messagingStore.totalUnread > 0"
+            class="gc-dash-nav-badge"
+          >
+            {{ messagingStore.totalUnread }}
+          </span>
+          <span v-else-if="item.disabled" class="gc-dash-nav-soon">soon</span>
         </router-link>
       </nav>
     </div>
@@ -46,6 +52,9 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
+import { useMessagingStore } from 'src/stores/messaging';
+
+const messagingStore = useMessagingStore();
 
 const { t } = useI18n();
 const route = useRoute();
@@ -68,7 +77,12 @@ const navItems: NavItem[] = [
     icon: 'description',
     matchPaths: ['/dashboard/applications'],
   },
-  { key: 'messages', path: '/dashboard/messages', icon: 'forum', disabled: true },
+  {
+    key: 'messages',
+    path: '/dashboard/messages',
+    icon: 'forum',
+    matchPaths: ['/dashboard/messages'],
+  },
   { key: 'profile', path: '/profile', icon: 'person' },
 ];
 
@@ -270,5 +284,24 @@ async function onSignOut() {
     background: var(--gc-bg-soft);
     color: var(--gc-text);
   }
+}
+
+.gc-dash-nav-badge {
+  margin-left: auto;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 7px;
+  border-radius: 10px;
+  background: var(--gc-primary);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gc-dash-nav-item-active .gc-dash-nav-badge {
+  background: rgba(255, 255, 255, 0.22);
 }
 </style>

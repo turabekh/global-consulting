@@ -30,7 +30,19 @@
           {{ t('dashboard.detail.referenceLabel') }}: <code>{{ shortReference }}</code>
         </span>
       </div>
-      <StatusBadge :status="application.status" />
+      <div class="gc-detail-header-actions">
+        <StatusBadge :status="application.status" />
+        <q-btn
+          v-if="conversationId"
+          color="primary"
+          unelevated
+          no-caps
+          icon="forum"
+          :label="t('dashboard.detail.messageButton')"
+          :to="`/dashboard/messages/${conversationId}`"
+          class="gc-detail-message-btn"
+        />
+      </div>
     </header>
 
     <section class="gc-detail-meta-row">
@@ -82,11 +94,21 @@ import { formatDate } from 'src/utils/format';
 import StatusBadge from 'src/components/dashboard/StatusBadge.vue';
 import Step5Review from 'src/components/dashboard/application-steps/Step5Review.vue';
 import Step4Documents from 'src/components/dashboard/application-steps/Step4Documents.vue';
+import { useMessagingStore } from 'src/stores/messaging';
 
 const { t, locale } = useI18n();
 const route = useRoute();
 const emit = defineEmits<{ 'page-title': [string] }>();
+const messagingStore = useMessagingStore();
 
+const conversationId = computed(() => {
+  // Conversations are auto-created for every application via backend signal,
+  // so we look it up by listing the user's conversations and matching the application reference.
+  const reference = application.value?.reference;
+  if (!reference) return null;
+  const match = messagingStore.conversations.find((c) => c.application_reference === reference);
+  return match?.id ?? null;
+});
 const application = ref<ApplicationDetail | null>(null);
 const loading = ref(true);
 
@@ -126,6 +148,7 @@ function onUnusedStep() {
 
 onMounted(async () => {
   await loadApplication();
+  void messagingStore.load();
   emit('page-title', application.value?.target_label || t('dashboard.detail.titleFallback'));
 });
 
@@ -190,6 +213,25 @@ watch(locale, () => {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.gc-detail-header-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+
+  @media (max-width: 599px) {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+.gc-detail-message-btn {
+  border-radius: var(--gc-radius-pill);
+  padding: 8px 18px;
+  font-weight: 600;
 }
 
 .gc-detail-header-text {

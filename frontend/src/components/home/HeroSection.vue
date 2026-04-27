@@ -36,8 +36,9 @@ const { t } = useI18n();
 <style scoped lang="scss">
 .gc-hero {
   position: relative;
-  padding: 64px 16px 32px;
+  padding: 64px 32px 32px;
   overflow: hidden;
+  width: 100%;
 }
 
 .gc-hero-inner {
@@ -71,14 +72,14 @@ const { t } = useI18n();
 }
 
 .gc-hero-emoji-plane {
-  top: 38%;
-  left: 4%;
+  top: 48%;
+  left: -4%;
   transform: rotate(-12deg);
 }
 
 .gc-hero-emoji-briefcase {
-  top: 38%;
-  right: 4%;
+  top: 48%;
+  right: -4%;
   transform: rotate(8deg);
 }
 

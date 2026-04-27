@@ -108,7 +108,7 @@ const { t } = useI18n();
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-align: left;
+  text-align: center;
 }
 
 .gc-stat-value {

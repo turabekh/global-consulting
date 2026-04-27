@@ -1,0 +1,24 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+
+{% block after_related_objects %}
+  {{ block.super }}
+
+  {% if staff_reply_url %}
+    <fieldset class="module aligned" style="margin-top: 20px;">
+      <h2>Send reply</h2>
+      <form method="post" action="{{ staff_reply_url }}" style="padding: 16px;">
+        {% csrf_token %}
+        <div class="form-row">
+          <div>
+            <label for="id_body" class="required">Message:</label>
+            {{ staff_reply_form.body }}
+          </div>
+        </div>
+        <div class="submit-row" style="text-align: right; padding-top: 12px;">
+          <input type="submit" value="Send reply" class="default" />
+        </div>
+      </form>
+    </fieldset>
+  {% endif %}
+{% endblock %}

@@ -103,6 +103,7 @@ export default {
     partnership: 'Partnership',
     signUp: 'Sign up',
     logIn: 'Log in',
+    dashboard: 'Dashboard',
   },
   services: {
     tourism: {
@@ -497,6 +498,7 @@ export default {
       messages: 'Messages',
       profile: 'Profile',
       signOut: 'Sign out',
+      viewSite: 'View site',
     },
     breadcrumb: {
       home: 'Dashboard',
@@ -767,6 +769,25 @@ export default {
       cannotEdit: 'You can no longer edit this application.',
       contactSupport: 'Need help? Contact us',
       empty: 'Application not found.',
+      messageButton: 'Message our team',
+    },
+    messages: {
+      title: 'Messages',
+      empty: "You don't have any conversations yet.",
+      emptyHint: 'Start an application to begin chatting with our team.',
+      selectThread: 'Select a conversation to start reading',
+      loading: 'Loading messages…',
+      threadEmpty: 'No messages yet. Say hi 👋',
+      placeholder: 'Type a message…',
+      send: 'Send',
+      sending: 'Sending…',
+      sendError: "Couldn't send. Please try again.",
+      backToList: 'Back to all conversations',
+      youLabel: 'You',
+      teamLabel: 'Our team',
+      systemLabel: 'System',
+      atTime: ' at ',
+      regardingLabel: 'Regarding',
     },
   },
 };

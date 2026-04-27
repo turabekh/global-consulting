@@ -11,6 +11,8 @@ import {
   type VerifyEmailPayload,
 } from 'src/services/auth';
 import { profileService, type ProfileUpdatePayload } from 'src/services/profile';
+import { messagingSocket } from 'src/services/messaging-ws';
+import { useMessagingStore } from 'src/stores/messaging';
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null);
@@ -25,6 +27,10 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       user.value = await authService.fetchUser();
       applyUserLocale();
+      messagingSocket.connect();
+      const messaging = useMessagingStore();
+      messaging.startListening();
+      void messaging.load();
     } catch {
       user.value = null;
     } finally {
@@ -39,6 +45,10 @@ export const useAuthStore = defineStore('auth', () => {
       const response = await authService.login(payload);
       user.value = response.user;
       applyUserLocale();
+      messagingSocket.connect();
+      const messaging = useMessagingStore();
+      messaging.startListening();
+      void messaging.load();
     } finally {
       isLoading.value = false;
     }
@@ -52,6 +62,10 @@ export const useAuthStore = defineStore('auth', () => {
       const response = await authService.googleLogin(token);
       user.value = response.user;
       applyUserLocale();
+      messagingSocket.connect();
+      const messaging = useMessagingStore();
+      messaging.startListening();
+      void messaging.load();
     } finally {
       isLoading.value = false;
     }
@@ -65,6 +79,10 @@ export const useAuthStore = defineStore('auth', () => {
       const response = await authService.facebookLogin(token);
       user.value = response.user;
       applyUserLocale();
+      messagingSocket.connect();
+      const messaging = useMessagingStore();
+      messaging.startListening();
+      void messaging.load();
     } finally {
       isLoading.value = false;
     }
@@ -91,6 +109,9 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       await authService.logout();
     } finally {
+      messagingSocket.disconnect();
+      const messaging = useMessagingStore();
+      messaging.reset();
       user.value = null;
       isLoading.value = false;
     }

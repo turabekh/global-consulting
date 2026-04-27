@@ -41,6 +41,19 @@
         </q-btn>
 
         <template v-if="authStore.isAuthenticated">
+          <q-btn
+            unelevated
+            no-caps
+            dense
+            color="primary"
+            :label="t('nav.dashboard')"
+            to="/dashboard"
+            class="gc-header-dashboard-btn"
+          >
+            <span v-if="messagingStore.totalUnread > 0" class="gc-header-dashboard-badge">
+              {{ messagingStore.totalUnread }}
+            </span>
+          </q-btn>
           <q-btn flat round dense class="gc-avatar-btn" aria-label="User menu">
             <q-avatar size="32px">
               <img v-if="avatarUrl" :src="avatarUrl" alt="" />
@@ -56,6 +69,20 @@
                   <q-item-section>{{ t('profile.title') }}</q-item-section>
                 </q-item>
                 <q-separator />
+
+                <q-item v-close-popup clickable to="/dashboard">
+                  <q-item-section avatar>
+                    <q-icon name="space_dashboard" size="18px" />
+                  </q-item-section>
+                  <q-item-section>{{ t('nav.dashboard') }}</q-item-section>
+                </q-item>
+
+                <q-item v-close-popup clickable to="/profile">
+                  <q-item-section avatar>
+                    <q-icon name="person" size="18px" />
+                  </q-item-section>
+                  <q-item-section>{{ t('profile.title') }}</q-item-section>
+                </q-item>
                 <q-item v-close-popup clickable @click="onLogout">
                   <q-item-section avatar>
                     <q-icon name="logout" size="18px" />
@@ -68,12 +95,12 @@
         </template>
 
         <template v-else>
+          <q-btn flat no-caps dense :label="t('nav.logIn')" class="gc-login-btn" to="/login" />
           <q-btn
             color="dark"
             unelevated
             no-caps
             :label="t('nav.signUp')"
-            icon="login"
             class="gc-signup-btn"
             to="/signup"
           />
@@ -100,11 +127,13 @@ import { useAuthStore } from 'src/stores/auth';
 import { setLocale } from 'src/boot/i18n';
 import type { SupportedLocale } from 'src/i18n';
 import ServicesMenu from './ServicesMenu.vue';
+import { useMessagingStore } from 'src/stores/messaging';
 
 const { t, locale } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
+const messagingStore = useMessagingStore();
 const emit = defineEmits<{ 'open-mobile-menu': [] }>();
 
 interface NavItem {
@@ -163,16 +192,16 @@ async function onLogout() {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(243, 239, 239, 0.85);
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid rgba(229, 231, 235, 0.6);
 }
 
 .gc-header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 16px;
+  width: 100%;
+  margin: 0;
+  padding: 12px 32px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -267,6 +296,47 @@ async function onLogout() {
   padding: 6px 16px;
   font-weight: 500;
   margin-left: 8px;
+}
+
+.gc-header-dashboard-btn {
+  border-radius: var(--gc-radius-pill);
+  padding: 6px 16px;
+  font-weight: 600;
+  font-size: 13px;
+  position: relative;
+  margin-right: 4px;
+}
+
+.gc-header-dashboard-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #d04848;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.gc-header-dashboard-btn {
+  border-radius: var(--gc-radius-pill);
+  padding: 6px 16px;
+  font-weight: 600;
+  font-size: 13px;
+  position: relative;
+  margin-right: 4px;
+  display: none;
+
+  @media (min-width: 720px) {
+    display: inline-flex;
+  }
 }
 
 .gc-mobile-menu-btn {

@@ -6,7 +6,9 @@
           <div class="gc-auth-form">
             <div class="gc-auth-form-inner">
               <div class="gc-auth-header">
-                <div class="gc-logo">G</div>
+                <router-link to="/" class="gc-logo-link" :aria-label="t('nav.home')">
+                  <span class="gc-logo">G</span>
+                </router-link>
                 <q-btn
                   flat
                   dense
@@ -35,7 +37,7 @@
 import { useI18n } from 'vue-i18n';
 import { setLocale } from 'src/boot/i18n';
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 
 function toggleLocale() {
   setLocale(locale.value === 'en' ? 'uz' : 'en');
@@ -91,6 +93,17 @@ function toggleLocale() {
   align-items: center;
   justify-content: center;
   letter-spacing: -0.02em;
+}
+
+.gc-logo-link {
+  text-decoration: none;
+  display: inline-flex;
+  border-radius: 10px;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .gc-locale-toggle {

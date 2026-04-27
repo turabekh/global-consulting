@@ -121,7 +121,7 @@ async function onSubmit() {
   error.value = null;
   try {
     await authStore.login({ email: email.value, password: password.value });
-    await router.push('/');
+    await router.push('/dashboard');
   } catch (err) {
     if (err instanceof AxiosError && err.response?.data) {
       const data = err.response.data as { non_field_errors?: string[]; detail?: string };

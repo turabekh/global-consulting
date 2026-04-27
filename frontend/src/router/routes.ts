@@ -98,6 +98,16 @@ const routes: RouteRecordRaw[] = [
         name: 'application-detail',
         component: () => import('pages/dashboard/ApplicationDetailPage.vue'),
       },
+      {
+        path: 'messages',
+        name: 'messages',
+        component: () => import('pages/dashboard/MessagesPage.vue'),
+      },
+      {
+        path: 'messages/:id',
+        name: 'message-thread',
+        component: () => import('pages/dashboard/MessagesPage.vue'),
+      },
     ],
   },
   {

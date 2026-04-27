@@ -103,6 +103,7 @@ export default {
     partnership: 'Hamkorlik',
     signUp: "Ro'yxatdan o'tish",
     logIn: 'Kirish',
+    dashboard: 'Dashboard',
   },
   services: {
     tourism: {
@@ -510,6 +511,7 @@ export default {
       messages: 'Xabarlar',
       profile: 'Profil',
       signOut: 'Chiqish',
+      viewSite: "Saytni ko'rish",
     },
     breadcrumb: {
       home: 'Dashboard',
@@ -781,6 +783,25 @@ export default {
       cannotEdit: 'Bu arizani endi tahrirlay olmaysiz.',
       contactSupport: "Yordam kerakmi? Biz bilan bog'laning",
       empty: 'Ariza topilmadi.',
+      messageButton: 'Jamoamizga xabar yozing',
+    },
+    messages: {
+      title: 'Xabarlar',
+      empty: "Sizda hali suhbatlar yo'q.",
+      emptyHint: 'Jamoamiz bilan suhbatlashish uchun ariza boshlang.',
+      selectThread: "O'qishni boshlash uchun suhbat tanlang",
+      loading: 'Xabarlar yuklanmoqda…',
+      threadEmpty: "Hali xabarlar yo'q. Salomlashing 👋",
+      placeholder: 'Xabar yozing…',
+      send: 'Yuborish',
+      sending: 'Yuborilmoqda…',
+      sendError: "Yuborib bo'lmadi. Qayta urining.",
+      backToList: 'Suhbatlarga qaytish',
+      youLabel: 'Siz',
+      teamLabel: 'Jamoamiz',
+      systemLabel: 'Tizim',
+      atTime: ', ',
+      regardingLabel: 'Mavzu',
     },
   },
 };

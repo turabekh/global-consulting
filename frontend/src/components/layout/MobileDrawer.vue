@@ -42,6 +42,13 @@
 
       <div class="gc-mobile-foot">
         <template v-if="authStore.isAuthenticated">
+          <router-link to="/dashboard" class="gc-mobile-dashboard" @click="open = false">
+            <q-icon name="space_dashboard" size="18px" />
+            <span class="gc-mobile-dashboard-label">{{ t('nav.dashboard') }}</span>
+            <span v-if="messagingStore.totalUnread > 0" class="gc-mobile-dashboard-badge">
+              {{ messagingStore.totalUnread }}
+            </span>
+          </router-link>
           <router-link to="/profile" class="gc-mobile-user" @click="open = false">
             <q-avatar size="40px">
               <img v-if="avatarUrl" :src="avatarUrl" alt="" />
@@ -92,6 +99,7 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
+import { useMessagingStore } from 'src/stores/messaging';
 import { setLocale } from 'src/boot/i18n';
 import type { SupportedLocale } from 'src/i18n';
 
@@ -101,6 +109,7 @@ const { t, locale } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
+const messagingStore = useMessagingStore();
 
 interface NavItem {
   key: 'home' | 'services' | 'about' | 'testimonial' | 'contact' | 'blog' | 'partnership';
@@ -274,6 +283,43 @@ async function onMobileLogout() {
   flex-direction: column;
   gap: 12px;
   border-top: 1px solid var(--gc-border);
+}
+
+.gc-mobile-dashboard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--gc-primary);
+  color: #ffffff;
+  border-radius: var(--gc-radius-md);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  position: relative;
+
+  &:hover {
+    background: var(--gc-primary);
+    opacity: 0.95;
+  }
+}
+
+.gc-mobile-dashboard-label {
+  flex: 1;
+}
+
+.gc-mobile-dashboard-badge {
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gc-mobile-user {
