@@ -1,0 +1,32 @@
+{% extends "email/base.html" %}
+
+{% block title %}Application update{% endblock %}
+
+{% block body %}
+  <h1 style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; color: #1a1a1a; margin: 0 0 8px;">
+    Update on your application
+  </h1>
+  <p style="font-size: 14px; color: #6b7280; margin: 0 0 24px; line-height: 1.55;">
+    Hi{% if user.first_name %} {{ user.first_name }}{% endif %}, we have an update on your <strong>{{ subject_label }}</strong> application.
+  </p>
+
+  {% if notify_status %}
+    <div style="background: #f3f0ff; border-radius: 8px; padding: 16px 18px; margin-bottom: 16px;">
+      <span style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #6e5ef6; font-weight: 700; margin-bottom: 4px;">New status</span>
+      <span style="font-size: 16px; font-weight: 700; color: #1a1a1a;">{{ status_label }}</span>
+    </div>
+  {% endif %}
+
+  {% if notify_message %}
+    <div style="background: #f3f0ff; border-left: 3px solid #6e5ef6; border-radius: 8px; padding: 16px 18px; margin-bottom: 16px;">
+      <span style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #6e5ef6; font-weight: 700; margin-bottom: 8px;">Note from our team</span>
+      <p style="font-size: 14px; line-height: 1.55; color: #1a1a1a; margin: 0; white-space: pre-wrap;">{{ team_message }}</p>
+    </div>
+  {% endif %}
+
+  <div style="text-align: center; margin: 32px 0 16px;">
+    <a href="{{ detail_url }}" style="display: inline-block; background: #6e5ef6; color: #ffffff; text-decoration: none; padding: 12px 32px; border-radius: 999px; font-weight: 600; font-size: 14px;">
+      View application
+    </a>
+  </div>
+{% endblock %}

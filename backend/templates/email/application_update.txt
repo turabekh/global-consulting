@@ -1,0 +1,12 @@
+Hi{% if user.first_name %} {{ user.first_name }}{% endif %},
+
+We have an update on your {{ subject_label }} application.
+
+{% if notify_status %}New status: {{ status_label }}
+{% endif %}{% if notify_message %}Note from our team:
+
+{{ team_message }}
+{% endif %}
+View your application: {{ detail_url }}
+
+— Global Consulting

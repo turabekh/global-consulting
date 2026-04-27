@@ -1,0 +1,1 @@
+{% if notify_status %}Update on your {{ subject_label }} application{% elif notify_message %}New note on your {{ subject_label }} application{% else %}Update on your {{ subject_label }} application{% endif %}

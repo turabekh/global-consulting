@@ -84,6 +84,19 @@ class Application(models.Model):
             "Message visible to the user. Use for status updates, requests for more info, etc."
         ),
     )
+    last_notified_status = models.CharField(
+        _("last notified status"),
+        max_length=16,
+        blank=True,
+        default="",
+        help_text=_("Tracks the last status the user was emailed about. Internal."),
+    )
+    last_notified_team_message = models.TextField(
+        _("last notified team message"),
+        blank=True,
+        default="",
+        help_text=_("Tracks the last team_message the user was emailed about. Internal."),
+    )
 
     submitted_at = models.DateTimeField(_("submitted at"), null=True, blank=True)
     decided_at = models.DateTimeField(_("decided at"), null=True, blank=True)
