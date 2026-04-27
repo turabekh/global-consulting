@@ -2,11 +2,18 @@ from allauth.account.adapter import get_adapter
 from dj_rest_auth.registration.serializers import (
     RegisterSerializer as BaseRegisterSerializer,
 )
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 from rest_framework import serializers
 
 from apps.profiles.serializers import ProfileSerializer
 
-from .models import User
+User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -70,3 +77,39 @@ class RegisterSerializer(BaseRegisterSerializer):
         user.save()
         self.custom_signup(request, user)
         return user
+
+
+class CustomPasswordResetSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate_email(self, value: str) -> str:
+        return value.lower()
+
+    def save(self, **kwargs):
+        email = self.validated_data["email"]
+        users = User.objects.filter(email__iexact=email, is_active=True)
+        frontend_url = getattr(settings, "FRONTEND_URL", "http://localhost:9000")
+
+        for user in users:
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            token = default_token_generator.make_token(user)
+            reset_url = f"{frontend_url}/#/reset-password/{uid}/{token}/"
+
+            context = {
+                "frontend_reset_url": reset_url,
+                "user": user,
+                "site_name": "Global Consulting",
+            }
+            subject = render_to_string("registration/password_reset_subject.txt", context).strip()
+            text_body = render_to_string("registration/password_reset_email.txt", context)
+            html_body = render_to_string("registration/password_reset_email.html", context)
+
+            send_mail(
+                subject=subject,
+                message=text_body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[user.email],
+                html_message=html_body,
+                fail_silently=False,
+            )
+        return email

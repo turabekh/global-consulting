@@ -126,7 +126,7 @@ const values = [
 }
 
 .gc-mv-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -194,7 +194,7 @@ const values = [
 }
 
 .gc-values-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

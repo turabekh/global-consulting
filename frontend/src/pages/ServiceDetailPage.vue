@@ -458,7 +458,7 @@ watch([() => route.params.type, locale], loadAll);
 }
 
 .gc-service-features-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -524,7 +524,7 @@ watch([() => route.params.type, locale], loadAll);
 }
 
 .gc-service-catalog-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -635,7 +635,7 @@ watch([() => route.params.type, locale], loadAll);
 }
 
 .gc-service-related-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 

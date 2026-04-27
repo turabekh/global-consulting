@@ -199,8 +199,8 @@ async function onLogout() {
 }
 
 .gc-header-inner {
-  width: 100%;
-  margin: 0;
+  max-width: 1600px;
+  margin: 0 auto;
   padding: 12px 32px;
   display: flex;
   align-items: center;

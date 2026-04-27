@@ -124,7 +124,7 @@ watch(locale, load);
 }
 
 .gc-team-inner {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

@@ -1,0 +1,9 @@
+{% load account %}{% user_display user as user_display %}Hi{% if user.first_name %} {{ user.first_name }}{% endif %},
+
+Welcome to Global Consulting! Please confirm your email address by visiting the link below:
+
+{{ activate_url }}
+
+If you didn't sign up, you can safely ignore this email.
+
+— Global Consulting

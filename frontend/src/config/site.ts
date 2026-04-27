@@ -1,6 +1,6 @@
 export const siteConfig = {
   contact: {
-    address: '123 Main Street New York, NY 10001',
+    address: '1 Global Plaza, Yashiqobod, Namangan 10001',
     phone: '+1 (123) 456-7890',
     email: 'global@example.com',
   },

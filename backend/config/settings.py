@@ -178,6 +178,7 @@ REST_AUTH = {
     "TOKEN_MODEL": None,
     "USER_DETAILS_SERIALIZER": "apps.users.serializers.UserSerializer",
     "REGISTER_SERIALIZER": "apps.users.serializers.RegisterSerializer",
+    "PASSWORD_RESET_SERIALIZER": "apps.users.serializers.CustomPasswordResetSerializer",
 }
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
@@ -245,3 +246,4 @@ CHANNEL_LAYERS = {
 }
 
 FRONTEND_URL = env("FRONTEND_URL", default="http://localhost:9000")
+ACCOUNT_ADAPTER = "apps.users.adapter.CustomAccountAdapter"
