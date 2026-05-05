@@ -12,7 +12,7 @@ export default defineConfig((ctx) => {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ['i18n', 'axios', 'auth'],
+    boot: ['i18n', 'pinia', 'axios', 'auth'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: ['app.scss'],
@@ -33,10 +33,10 @@ export default defineConfig((ctx) => {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#build
     build: {
-      target: {
-        browser: 'baseline-widely-available',
-        node: 'node22',
-      },
+      // target: {
+      //   browser: 'baseline-widely-available',
+      //   node: 'node22',
+      // },
 
       typescript: {
         strict: true,
@@ -53,14 +53,22 @@ export default defineConfig((ctx) => {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        API_URL: process.env.API_URL || 'http://localhost:8000/api',
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf(viteConf) {
+        viteConf.build ??= {};
+        viteConf.build.rollupOptions ??= {};
+        const output = (viteConf.build.rollupOptions.output ?? {}) as Record<string, unknown>;
+        output.manualChunks = () => 'app';
+        viteConf.build.rollupOptions.output = output;
+      },
       // viteVuePluginOptions: {},
 
       vitePlugins: [
@@ -115,7 +123,7 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Notify'],
+      plugins: [],
     },
 
     // animations: 'all', // --- includes all animations

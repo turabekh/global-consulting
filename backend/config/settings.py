@@ -140,7 +140,9 @@ REDIS_URL = env("REDIS_URL", default="redis://localhost:6379/0")
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST", default="localhost")
 EMAIL_PORT = env.int("EMAIL_PORT", default=1025)
-EMAIL_USE_TLS = False
+EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
+EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=False)
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="noreply@globalconsulting.local")
 
 
@@ -193,6 +195,11 @@ CORS_ALLOWED_ORIGINS = env.list(
     default=["http://localhost:9000", "http://127.0.0.1:9000"],
 )
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = env.list(
+    "CSRF_TRUSTED_ORIGINS",
+    default=["http://localhost:9000", "http://localhost:8000"],
+)
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Global Consulting API",

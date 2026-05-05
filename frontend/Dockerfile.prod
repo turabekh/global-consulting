@@ -1,5 +1,9 @@
 FROM node:22-alpine AS builder
 
+ARG API_URL=/api
+
+ENV API_URL=$API_URL
+
 RUN npm install -g @quasar/cli
 
 WORKDIR /app
@@ -9,7 +13,7 @@ RUN npm ci --ignore-scripts
 
 COPY . .
 
-RUN quasar build
+RUN quasar prepare && quasar build
 
 
 FROM nginx:1.27-alpine AS runtime
