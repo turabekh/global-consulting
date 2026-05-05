@@ -14,12 +14,12 @@ admin.site.index_title = "Administration"
 
 
 def password_reset_redirect(request, uidb64, token):
-    frontend = "http://localhost:9000"
+    frontend = settings.FRONTEND_URL
     return HttpResponseRedirect(f"{frontend}/#/reset-password/{uidb64}/{token}")
 
 
 def email_confirm_redirect(request, key):
-    frontend = "http://localhost:9000"
+    frontend = settings.FRONTEND_URL
     return HttpResponseRedirect(f"{frontend}/#/verify-email/{key}")
 
 
